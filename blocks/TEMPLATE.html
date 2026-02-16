@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- EDIT: Update title -->
+    <title>{{PRODUCT_NAME}} - Cognate Audio</title>
+    <!-- EDIT: Update description -->
+    <meta name="description" content="{{SHORT_DESCRIPTION}}">
+    <link rel="icon" type="image/png" href="../images/Cog.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cognate-orange': '#e86c1f',
+                        'cognate-purple': '#8b5cf6',
+                        'cognate-gray': '#6b7280',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <img src="../images/Cognate Audio Logo.png" alt="Cognate Audio" class="h-20">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-cognate-orange transition-colors">Home</a>
+                    <a href="../blocks.html" class="text-gray-900 font-medium hover:text-cognate-orange transition-colors">Blocks</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-cognate-orange transition-colors">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-cognate-orange transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+                <a href="../index.html" class="block py-2 text-gray-600">Home</a>
+                <a href="../blocks.html" class="block py-2 text-gray-900 font-medium">Blocks</a>
+                <a href="../about.html" class="block py-2 text-gray-600">About</a>
+                <a href="../contact.html" class="block py-2 text-gray-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="pt-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <nav class="text-sm text-gray-500">
+                <a href="../blocks.html" class="hover:text-cognate-orange">Blocks</a>
+                <span class="mx-2">/</span>
+                <!-- EDIT: Update product name -->
+                <span class="text-gray-900">{{PRODUCT_NAME}}</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Hero -->
+    <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Product Image -->
+                <div>
+                    <!-- EDIT: Update main product image -->
+                    <div class="overflow-hidden rounded-2xl shadow-xl">
+                        <img src="../images/{{MAIN_IMAGE}}" alt="{{PRODUCT_NAME}} on Darkglass Anagram" class="w-full transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <!-- Additional Images - EDIT: Update or remove these -->
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <div class="overflow-hidden rounded-lg">
+                            <img src="../images/{{IMAGE_2}}" alt="{{PRODUCT_NAME}}" class="w-full cursor-pointer transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="overflow-hidden rounded-lg">
+                            <img src="../images/{{IMAGE_3}}" alt="{{PRODUCT_NAME}}" class="w-full cursor-pointer transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="overflow-hidden rounded-lg">
+                            <img src="../images/{{IMAGE_4}}" alt="{{PRODUCT_NAME}}" class="w-full cursor-pointer transition-transform duration-700 hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div>
+                    <!-- EDIT: Update category badge - options: Practice in the Box, Synth Bass, Studio Sound Live -->
+                    <span class="inline-block bg-orange-100 text-cognate-orange text-sm font-medium px-3 py-1 rounded-full mb-4">{{CATEGORY}}</span>
+                    <!-- EDIT: Update product name -->
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">{{PRODUCT_NAME}}</h1>
+                    <!-- EDIT: Update header paragraph -->
+                    <p class="text-xl text-gray-600 mb-8">
+                        {{HEADER_PARAGRAPH}}
+                    </p>
+
+                    <!-- Features List - EDIT: Update features -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium">{{FEATURE_1_TITLE}}</p>
+                                <p class="text-sm text-gray-500">{{FEATURE_1_DESCRIPTION}}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium">{{FEATURE_2_TITLE}}</p>
+                                <p class="text-sm text-gray-500">{{FEATURE_2_DESCRIPTION}}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium">{{FEATURE_3_TITLE}}</p>
+                                <p class="text-sm text-gray-500">{{FEATURE_3_DESCRIPTION}}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium">{{FEATURE_4_TITLE}}</p>
+                                <p class="text-sm text-gray-500">{{FEATURE_4_DESCRIPTION}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA - EDIT: Update store link if needed -->
+                    <a href="https://store.darkglass.com" target="_blank" class="inline-flex items-center gap-2 bg-cognate-orange text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-600 transition-colors">
+                        Get on Anagram Store
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+
+                    <!-- OPTIONAL: Add "Free" badge for free plugins -->
+                    <!--
+                    <span class="inline-block ml-4 text-sm text-green-600 font-medium">Free</span>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Description -->
+    <section class="py-12 px-6 bg-gray-50">
+        <div class="max-w-3xl mx-auto">
+            <!-- EDIT: Update product name -->
+            <h2 class="text-2xl font-bold mb-6">About {{PRODUCT_NAME}}</h2>
+            <!-- EDIT: Update description paragraphs -->
+            <div class="prose prose-gray max-w-none">
+                <p class="text-gray-600 mb-4">
+                    {{DESCRIPTION_PARAGRAPH_1}}
+                </p>
+                <p class="text-gray-600 mb-4">
+                    {{DESCRIPTION_PARAGRAPH_2}}
+                </p>
+                <p class="text-gray-600 mb-4">
+                    {{DESCRIPTION_PARAGRAPH_3}}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos -->
+    <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8">Videos</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Promo Video - EDIT: Replace VIDEO_ID with actual YouTube video ID -->
+                <div>
+                    <div class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center">
+                        <p class="text-gray-500">Promo video coming soon</p>
+                        <!-- When video is ready, replace the above with: -->
+                        <!-- <iframe class="w-full h-full rounded-xl" src="https://www.youtube.com/embed/{{PROMO_VIDEO_ID}}" frameborder="0" allowfullscreen></iframe> -->
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Promo Video</p>
+                </div>
+                <!-- Walkthrough Video - EDIT: Replace VIDEO_ID with actual YouTube video ID -->
+                <div>
+                    <div class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center">
+                        <p class="text-gray-500">Walkthrough video coming soon</p>
+                        <!-- When video is ready, replace the above with: -->
+                        <!-- <iframe class="w-full h-full rounded-xl" src="https://www.youtube.com/embed/{{WALKTHROUGH_VIDEO_ID}}" frameborder="0" allowfullscreen></iframe> -->
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Walkthrough</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products - EDIT: Update related products -->
+    <section class="py-12 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8">Related Blocks</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Related Product 1 -->
+                <a href="{{RELATED_1_LINK}}" class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-video bg-gray-100 overflow-hidden">
+                        <img src="../images/{{RELATED_1_IMAGE}}" alt="{{RELATED_1_NAME}}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">{{RELATED_1_NAME}}</h3>
+                        <p class="text-gray-600 text-sm">{{RELATED_1_DESCRIPTION}}</p>
+                    </div>
+                </a>
+                <!-- Related Product 2 -->
+                <a href="{{RELATED_2_LINK}}" class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-video bg-gray-100 overflow-hidden">
+                        <img src="../images/{{RELATED_2_IMAGE}}" alt="{{RELATED_2_NAME}}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">{{RELATED_2_NAME}}</h3>
+                        <p class="text-gray-600 text-sm">{{RELATED_2_DESCRIPTION}}</p>
+                    </div>
+                </a>
+                <!-- Related Product 3 -->
+                <a href="{{RELATED_3_LINK}}" class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-video bg-gray-100 overflow-hidden">
+                        <img src="../images/{{RELATED_3_IMAGE}}" alt="{{RELATED_3_NAME}}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">{{RELATED_3_NAME}}</h3>
+                        <p class="text-gray-600 text-sm">{{RELATED_3_DESCRIPTION}}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="../images/Cog.png" alt="Cognate Audio" class="h-8">
+                    <span class="font-medium text-gray-600">Cognate Audio</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2025 Cognate Audio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
+
+<!--
+================================================================================
+TEMPLATE USAGE INSTRUCTIONS
+================================================================================
+
+To create a new product page:
+
+1. Copy this file and rename it (e.g., metro.html, drums.html)
+
+2. Replace all {{PLACEHOLDER}} values:
+
+   BASIC INFO:
+   - {{PRODUCT_NAME}} - e.g., "Cognate Metro"
+   - {{SHORT_DESCRIPTION}} - Meta description for SEO
+   - {{CATEGORY}} - "Practice in the Box", "Synth Bass", or "Studio Sound Live"
+   - {{HEADER_PARAGRAPH}} - One paragraph summary of the product
+
+   IMAGES:
+   - {{MAIN_IMAGE}} - Main product shot filename (e.g., "6.png")
+   - {{IMAGE_2}}, {{IMAGE_3}}, {{IMAGE_4}} - Additional images
+
+   FEATURES (4 features recommended):
+   - {{FEATURE_1_TITLE}}, {{FEATURE_1_DESCRIPTION}}
+   - {{FEATURE_2_TITLE}}, {{FEATURE_2_DESCRIPTION}}
+   - {{FEATURE_3_TITLE}}, {{FEATURE_3_DESCRIPTION}}
+   - {{FEATURE_4_TITLE}}, {{FEATURE_4_DESCRIPTION}}
+
+   DESCRIPTION:
+   - {{DESCRIPTION_PARAGRAPH_1}}
+   - {{DESCRIPTION_PARAGRAPH_2}}
+   - {{DESCRIPTION_PARAGRAPH_3}}
+
+   VIDEOS (when available):
+   - {{PROMO_VIDEO_ID}} - YouTube video ID
+   - {{WALKTHROUGH_VIDEO_ID}} - YouTube video ID
+
+   RELATED PRODUCTS (3 products):
+   - {{RELATED_1_LINK}}, {{RELATED_1_IMAGE}}, {{RELATED_1_NAME}}, {{RELATED_1_DESCRIPTION}}
+   - {{RELATED_2_LINK}}, {{RELATED_2_IMAGE}}, {{RELATED_2_NAME}}, {{RELATED_2_DESCRIPTION}}
+   - {{RELATED_3_LINK}}, {{RELATED_3_IMAGE}}, {{RELATED_3_NAME}}, {{RELATED_3_DESCRIPTION}}
+
+3. For FREE products, add the "Free" badge next to the category badge:
+   <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full ml-2">Free</span>
+
+4. Delete this instruction block when done.
+
+================================================================================
+-->

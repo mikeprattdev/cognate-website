@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Cognate Audio</title>
+    <meta name="description" content="Get in touch with Cognate Audio. We'd love to hear your questions, feedback, and feature requests.">
+    <link rel="icon" type="image/png" href="images/Cog.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cognate-orange': '#e86c1f',
+                        'cognate-purple': '#8b5cf6',
+                        'cognate-gray': '#6b7280',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="images/Cognate Audio Logo.png" alt="Cognate Audio" class="h-20">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-gray-600 hover:text-cognate-orange transition-colors">Home</a>
+                    <a href="blocks.html" class="text-gray-600 hover:text-cognate-orange transition-colors">Blocks</a>
+                    <a href="about.html" class="text-gray-600 hover:text-cognate-orange transition-colors">About</a>
+                    <a href="contact.html" class="text-gray-900 font-medium hover:text-cognate-orange transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+                <a href="index.html" class="block py-2 text-gray-600">Home</a>
+                <a href="blocks.html" class="block py-2 text-gray-600">Blocks</a>
+                <a href="about.html" class="block py-2 text-gray-600">About</a>
+                <a href="contact.html" class="block py-2 text-gray-900 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+            <p class="text-xl text-gray-600 max-w-2xl">Have questions, feedback, or feature requests? We'd love to hear from you.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Send us a message</h2>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
+                        <!-- Note: Replace YOUR_FORM_ID with actual Formspree form ID -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cognate-orange focus:border-transparent outline-none transition-all">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cognate-orange focus:border-transparent outline-none transition-all">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <select id="subject" name="subject"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cognate-orange focus:border-transparent outline-none transition-all bg-white">
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="bug">Bug Report</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cognate-orange focus:border-transparent outline-none transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-cognate-orange text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-600 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Other ways to reach us</h2>
+
+                    <!-- Email -->
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <a href="mailto:hello@cognate.audio" class="text-cognate-orange hover:underline">hello@cognate.audio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="mb-8">
+                        <h3 class="font-medium mb-4">Follow us</h3>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-600 hover:bg-cognate-orange hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-600 hover:bg-cognate-orange hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-600 hover:bg-cognate-orange hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- FAQ -->
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                        <h3 class="font-medium mb-4">Common Questions</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium text-sm">Where can I buy Cognate blocks?</p>
+                                <p class="text-sm text-gray-600">All our blocks are available exclusively on the <a href="https://store.darkglass.com" target="_blank" class="text-cognate-orange hover:underline">Darkglass Anagram Store</a>.</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">Do I need an Anagram to use your plugins?</p>
+                                <p class="text-sm text-gray-600">Yes, Cognate blocks are designed specifically for the Darkglass Anagram platform.</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">How do I install blocks on my Anagram?</p>
+                                <p class="text-sm text-gray-600">After purchasing from the Anagram Store, blocks are automatically available in your Anagram app library.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-gray-100 mt-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="images/Cog.png" alt="Cognate Audio" class="h-8">
+                    <span class="font-medium text-gray-600">Cognate Audio</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2025 Cognate Audio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
