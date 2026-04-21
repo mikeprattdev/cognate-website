@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cognate.audio/</loc></url>
+  <url><loc>https://cognate.audio/blocks.html</loc></url>
+  <url><loc>https://cognate.audio/about.html</loc></url>
+  <url><loc>https://cognate.audio/contact.html</loc></url>
+
+  <url><loc>https://cognate.audio/blocks/cognate-bitcrush/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-chord/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-hologram/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-kinetic/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-metro/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-pultrick/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-ringmod/</loc></url>
+
+  <url><loc>https://cognate.audio/blocks/cognate-bitcrush/manual/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-chord/manual/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-hologram/manual/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-kinetic/manual/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-metro/manual/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-pultrick/manual/</loc></url>
+  <url><loc>https://cognate.audio/blocks/cognate-ringmod/manual/</loc></url>
+</urlset>

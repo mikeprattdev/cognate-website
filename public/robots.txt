@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block the /plugins/* compat redirect from being indexed separately
+# (same content lives at /blocks/*).
+Disallow: /plugins/
+Disallow: /plugins.html
+
+Sitemap: https://cognate.audio/sitemap.xml
