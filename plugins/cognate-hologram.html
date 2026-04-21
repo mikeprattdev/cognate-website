@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognate Hologram - Cognate Audio</title>
+    <meta name="description" content="Cognate Hologram – who says bass should always be mono?">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cognate-orange': '#F2694A',
+                        'cognate-dark': '#48515B',
+                        'cognate-red': '#DF3610',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <img src="../images/CognateAudioPrimary-Colour.png" alt="Cognate Audio" class="h-10">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-cognate-orange transition-colors">Home</a>
+                    <a href="../plugins.html" class="text-gray-900 font-medium hover:text-cognate-orange transition-colors">Plugins</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-cognate-orange transition-colors">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-cognate-orange transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+                <a href="../index.html" class="block py-2 text-gray-600">Home</a>
+                <a href="../plugins.html" class="block py-2 text-gray-900 font-medium">Plugins</a>
+                <a href="../about.html" class="block py-2 text-gray-600">About</a>
+                <a href="../contact.html" class="block py-2 text-gray-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="pt-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <nav class="text-sm text-gray-500">
+                <a href="../plugins.html" class="hover:text-cognate-orange">Plugins</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Cognate Hologram</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Hero -->
+    <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Product Image -->
+                <div>
+                    <div class="overflow-hidden rounded-2xl shadow-xl">
+                        <img src="../images/cognate-hologram block image 800x800.png" alt="Cognate Hologram on Darkglass Anagram" class="w-full transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="grid grid-cols-1 gap-4 mt-4">
+                        <div class="overflow-hidden rounded-lg">
+                            <img data-lightbox-group="params" src="../images/cognate-hologram params page 1.png" alt="Cognate Hologram" class="w-full cursor-pointer transition-transform duration-700 hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div>
+                    <span class="inline-block bg-orange-100 text-cognate-orange text-sm font-medium px-3 py-1 rounded-full mb-4">Modulation &amp; Pitch</span>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Cognate Hologram</h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Cognate Hologram – who says bass should always be mono?
+                    </p>
+
+                    <!-- Features -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium">A stereo spatialiser built specifically for bass, Hologram gives your signal width and movement without sacrificing low-end solidity.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium">Choose from four classic mono-to-stereo methods, each with a distinct character, from subtle shimmer to lush and dense, vintage to modern.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium">Microshift combines fine pitch shifting with short delays for that thick, studio-double sound.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <a href="https://marketplace.anagram.shop/learn-more?id=gid://shopify/Product/15949140853114" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-cognate-orange text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-600 transition-colors">
+                        <img src="../images/anagram-marketplace/icon-white.png" alt="" class="w-5 h-5 object-contain">
+                        Get it on the Anagram Marketplace
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Manual links -->
+                    <div class="mt-5 flex flex-wrap gap-5 text-sm">
+                        <a href="../manuals/cognate-hologram/cognate-hologram.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gray-700 hover:text-cognate-orange transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            View manual
+                        </a>
+                        <a href="../manuals/cognate-hologram/cognate-hologram.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gray-700 hover:text-cognate-orange transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="py-12 px-6 bg-gray-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">About Cognate Hologram</h2>
+            <div class="prose prose-gray max-w-none">
+                <p class="text-gray-600 mb-4">
+                    Dimension a homage to the Roland SDD-320&#x27;s lush stereo spread; wide without obviously wobbling.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Hyper stacked unison voices in the style of Serum, dense and synth-like
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Doubler flanger-derived doubling inspired by the MXR Model 126, with an organic, BBD delay width.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Use the Depth control to dial up the effect, and the Modulation parameter to increase the movement and depth.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    For when you need more, the Width control applies a carefully tuned mid/side process to enhance the stereo image even further.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Low Mono keeps the fundamentals anchored in the centre, and every mode collapses to mono cleanly — no phase cancellation, no frequencies disappearing in the mix.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Go beyond chorus. Still bass.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos -->
+    <section class="py-12 px-6 hidden">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8">Videos</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <div class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center">
+                        <p class="text-gray-500">Promo video coming soon</p>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Promo Video</p>
+                </div>
+                <div>
+                    <div class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center">
+                        <p class="text-gray-500">Walkthrough video coming soon</p>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Walkthrough</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESETS:START -->
+<!-- PRESETS:END -->
+
+    <!-- Related Plugins -->
+    <section class="py-12 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8">Related Plugins</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="cognate-bitcrush.html" class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-video bg-gray-100 overflow-hidden">
+                        <img src="../images/cognate-bitcrush block image 800x800.png" alt="Cognate Bitcrush" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Cognate Bitcrush</h3>
+                        <p class="text-gray-600 text-sm">Cognate Bitcrush – a gritty, lo-fi sculptor for everything from 8-bit to digital destruction</p>
+                    </div>
+                </a>
+                <a href="cognate-chord.html" class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-video bg-gray-100 overflow-hidden">
+                        <img src="../images/cognate-chord block image 800x800.png" alt="Cognate Chord" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Cognate Chord</h3>
+                        <p class="text-gray-600 text-sm">Cognate Chord – a chord reference and practice companion</p>
+                    </div>
+                </a>
+                <a href="cognate-kinetic.html" class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-video bg-gray-100 overflow-hidden">
+                        <img src="../images/cognate-kinetic block image 800x800.png" alt="Cognate Kinetic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Cognate Kinetic</h3>
+                        <p class="text-gray-600 text-sm">Cognate Kinetic - an envelope filter that works with you, not against you</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="../images/CognateAudioSymbol-Colour.png" alt="Cognate Audio" class="h-8">
+                    <span class="font-medium text-gray-600">Cognate Audio</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.youtube.com/@CognateAudio" target="_blank" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/cognate.audio" target="_blank" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/cognate.audio/" target="_blank" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2026 Cognate Audio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden items-center justify-center p-6 overflow-auto" role="dialog" aria-modal="true">
+        <button class="lb-close absolute top-4 right-4 text-white/80 hover:text-white p-2" aria-label="Close">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div class="max-w-6xl w-full my-auto">
+            <h3 class="lb-name text-white text-2xl font-bold mb-2 hidden"></h3>
+            <p class="lb-desc text-gray-300 mb-6 hidden"></p>
+            <div class="lb-images grid gap-4" style="grid-template-columns: 1fr;"></div>
+            <audio class="lb-audio w-full mt-6 hidden" controls preload="none"></audio>
+        </div>
+    </div>
+    <script>
+    (function(){
+      var lb = document.getElementById('lightbox');
+      var lbName = lb.querySelector('.lb-name');
+      var lbDesc = lb.querySelector('.lb-desc');
+      var lbImages = lb.querySelector('.lb-images');
+      var lbAudio = lb.querySelector('.lb-audio');
+      function openLightbox(images, name, desc, audio){
+        if (name) { lbName.textContent = name; lbName.classList.remove('hidden'); } else { lbName.classList.add('hidden'); }
+        if (desc) { lbDesc.textContent = desc; lbDesc.classList.remove('hidden'); } else { lbDesc.classList.add('hidden'); }
+        lbImages.innerHTML = (images || []).map(function(src){ return '<img src="' + src + '" class="w-full rounded-lg">'; }).join('');
+        if (audio) { lbAudio.src = audio; lbAudio.classList.remove('hidden'); } else { lbAudio.removeAttribute('src'); lbAudio.classList.add('hidden'); }
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(){
+        lbAudio.pause();
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('img[data-lightbox-group]').forEach(function(el){
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', function(){
+          var group = el.dataset.lightboxGroup;
+          var imgs = Array.from(document.querySelectorAll('img[data-lightbox-group="'+group+'"]')).map(function(i){return i.getAttribute('src');});
+          openLightbox(imgs, el.dataset.lightboxTitle || '', el.dataset.lightboxDesc || '', el.dataset.lightboxAudio || '');
+        });
+      });
+      lb.addEventListener('click', function(e){ if (e.target === lb) closeLightbox(); });
+      lb.querySelector('.lb-close').addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', function(e){ if (e.key==='Escape' && !lb.classList.contains('hidden')) closeLightbox(); });
+      window.openLightbox = openLightbox;
+      window.closeLightbox = closeLightbox;
+    })();
+    </script>
+</body>
+</html>

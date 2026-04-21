@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cognate Pultrick — Manual</title>
+<style>
+/* Cognate Audio plugin manual — shared HTML + PDF stylesheet */
+
+@page {
+    size: A4;
+    margin: 10mm 16mm 14mm 16mm;
+    @bottom-left {
+        content: "Cognate Pultrick";
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+    @bottom-center {
+        content: counter(page) " / " counter(pages);
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+}
+
+/* The first page is taller (cover, logo, block image, at-a-glance) so it
+   keeps the larger top margin. Subsequent pages tighten up. */
+@page :first {
+    margin-top: 18mm;
+}
+
+:root {
+    --accent: #f0a020;
+    --ink: #1a1a1a;
+    --muted: #666;
+    --rule: #e4e4e4;
+    --panel: #f7f7f7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+}
+
+/* Web wrapper (ignored by PDF) */
+body.web {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 28px 64px;
+}
+
+.cover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+}
+
+.cover .logo {
+    height: 38px;
+}
+
+.cover .release {
+    text-align: right;
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.cover .release strong {
+    color: var(--ink);
+}
+
+.title-block {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 8px 0 18px;
+}
+
+.title-block img.block {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.title-block h1 {
+    font-size: 26pt;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+}
+
+.title-block .tagline {
+    color: var(--muted);
+    font-size: 11pt;
+    margin: 0;
+}
+
+h2 {
+    font-size: 15pt;
+    margin: 26px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+}
+
+h3 {
+    font-size: 12.5pt;
+    margin: 22px 0 8px;
+    color: var(--accent);
+    page-break-after: avoid;
+}
+
+p { margin: 0 0 10px; }
+
+ul { margin: 0 0 12px 18px; padding: 0; }
+li { margin: 2px 0; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 14px;
+    font-size: 10pt;
+}
+
+table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+}
+
+table td:first-child {
+    width: 30%;
+    color: var(--muted);
+}
+
+/* Full-page panel screenshots at the top of the Parameters section */
+.page-overview {
+    margin: 0 0 22px;
+    page-break-inside: avoid;
+}
+
+.page-overview img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    margin-bottom: 4px;
+}
+
+.page-overview .caption {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 0 14px;
+}
+
+/* Each param block: image left, content right */
+.param {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin: 0 0 18px;
+    padding: 12px;
+    background: var(--panel);
+    border-radius: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.param .img {
+    flex: 0 0 180px;
+}
+
+.param .img img {
+    width: 100%;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.param .body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.param .body h3 {
+    margin-top: 0;
+}
+
+.param .body ul.spec {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 9.5pt;
+    color: var(--muted);
+}
+
+.param .body ul.spec li {
+    display: inline-block;
+    margin-right: 14px;
+}
+
+.param .body ul.spec li strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 9.5pt;
+    background: #ececec;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+strong { font-weight: 600; }
+
+/* Tip / note callouts could be added later */
+.note {
+    background: #fff7e6;
+    border-left: 3px solid var(--accent);
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 10pt;
+}
+
+.footer-note {
+    margin-top: 36px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+}
+
+</style>
+</head>
+<body class="web">
+<header class="site-strip" style="max-width:780px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;">
+<a href="../../index.html" style="display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;">
+<img src="../../images/logo-symbol.png" alt="Cognate Audio" style="height:24px;"><span style="font-weight:500;color:#4B5563;">Cognate Audio</span>
+</a>
+<nav style="display:flex;gap:18px;align-items:center;">
+<a href="../../plugins/cognate-pultrick.html" style="color:#4B5563;text-decoration:none;">← Back to Cognate Pultrick</a>
+<a href="cognate-pultrick.pdf" style="color:#F2694A;text-decoration:none;font-weight:500;">Download PDF</a>
+</nav>
+</header>
+
+<div class="cover">  <img class="logo" src="../../images/logo-primary.png" alt="Cognate Audio">  <div class="release">    <strong>v1.01</strong><br>    06/04/2026  </div></div>
+<div class="title-block">  <img class="block" src="images/block.png" alt="block">  <div>    <h1>Cognate Pultrick</h1>    <p class="tagline">EQs, Filters & Dynamics</p>  </div></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>EQs, Filters &amp; Dynamics</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Mono in / mono out</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td>1.01 (06/04/2026)</td>
+</tr>
+</tbody>
+</table>
+<h2>Overview</h2>
+<p>Cognate Pultrick is a faithful model of the EQ1-P circuit — valve warmth, transformer iron, and the famous boost-cut trick that's been quietly shaping great bass tone for sixty years. Boost and cut the same low frequency at the same time and something unexpected happens: a complex, interactive response that tightens and fattens at once, in a way no conventional EQ can replicate. Pultrick captures the full circuit — not just the EQ curves, but the component interactions, the valve saturation, and the iron transformer that gives the real thing its low-end grip and top-end air.</p>
+<h2>Use cases</h2>
+<ul>
+<li><strong>The Pultec low-end trick.</strong> Pick a low frequency, then push <strong>Low Boost</strong> and <strong>Low Atten</strong> at the same time. The interaction adds weight and tightens the bottom simultaneously — the move studio engineers have used since the 1960s.</li>
+<li><strong>Tightening a flabby low end.</strong> Low frequency at 60 Hz, modest boost, more atten — pulls the mud out without losing fundamental.</li>
+<li><strong>Adding air without harshness.</strong> High band at 8–10 kHz with <strong>High Boost</strong>, gentle <strong>Bandwidth</strong> — opens up presence and pick attack without the brittleness of a digital shelf.</li>
+<li><strong>Mastering the tone of a clean DI.</strong> Always-on, gently set: a touch of low-end fatness, a small high-end lift, and the transformer model on top.</li>
+<li><strong>Driving the input.</strong> Push the boosts hard for slight valve and transformer saturation in addition to the EQ shape.</li>
+<li><strong>Anchor on a pedalboard.</strong> Functions as the tonal "voice" of a preset that other effects sit on top of.</li>
+</ul>
+<h2>Parameters</h2>
+<div class="page-overview"><img alt="Page 1" src="images/pages/page-1.png" /><p class="caption">Page 1 of 2</p></div>
+<div class="page-overview"><img alt="Page 2" src="images/pages/page-2.png" /><p class="caption">Page 2 of 2</p></div>
+<div class="param"><div class="img"><img alt="Bypass" src="images/params/bypass.png" /></div><div class="body"><h3>Bypass</h3>
+<ul class="spec">
+<li><strong>Type:</strong> Toggle in the centre of the top bar</li>
+</ul>
+<p>Turns off the EQ and passes your bass straight through, including the modelled valve and transformer stages. Use it to A/B Pultrick against the dry signal — even with all the EQ controls at zero, the circuit colour is still in the path when the plugin is active.</p>
+</div></div><div class="param"><div class="img"><img alt="Low Freq" src="images/params/lf_freq.png" /></div><div class="body"><h3>Low Freq</h3>
+<ul class="spec">
+<li><strong>Options:</strong> 20 Hz, 30 Hz, 60 Hz, 100 Hz</li>
+</ul>
+<p>The low-band centre frequency. Pick the option that sits where you want to <em>feel</em> the action, then use <strong>Low Boost</strong> and <strong>Low Atten</strong> to shape it.</p>
+<ul>
+<li><strong>20 Hz</strong> — Sub. Mostly felt rather than heard; the territory of low-B fundamentals.</li>
+<li><strong>30 Hz</strong> — Deep low end. Adds weight and rumble.</li>
+<li><strong>60 Hz</strong> — Body. The most musical setting for the boost-cut trick — fattens without flapping.</li>
+<li><strong>100 Hz</strong> — Low mids. Where notes get their punch and definition.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Low Boost" src="images/params/lf_boost.png" /></div><div class="body"><h3>Low Boost</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 10</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>Boost amount at the <strong>Low Freq</strong> centre. On its own this is a gentle low-shelf-like lift. Where it gets interesting is when <strong>Low Atten</strong> is also up: the two together create a complex, asymmetric curve that pushes the low end forward while pulling out the muddy region just above it. That's the Pultec trick — and it sounds quite different from any conventional EQ doing the same thing.</p>
+</div></div><div class="param"><div class="img"><img alt="Low Atten" src="images/params/lf_atten.png" /></div><div class="body"><h3>Low Atten</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 10</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>Cut amount at the <strong>Low Freq</strong> centre. The cut sits at a slightly higher frequency than the boost — the original designers' "mistake" that turned the EQ into something interactive. Use it on its own to clean up mud, or alongside <strong>Low Boost</strong> for the famous boost-and-cut trick. Push both for the iconic Pultec low-end shape.</p>
+</div></div><div class="param"><div class="img"><img alt="High Freq" src="images/params/hf_freq.png" /></div><div class="body"><h3>High Freq</h3>
+<ul class="spec">
+<li><strong>Options:</strong> 3 kHz, 5 kHz, 8 kHz, 10 kHz, 16 kHz</li>
+</ul>
+<p>The high-band centre frequency for the boost. This is a peaking filter — the lift sits at this frequency with the width set by <strong>Bandwidth</strong>.</p>
+<ul>
+<li><strong>3 kHz</strong> — Upper-mid presence. Good for cutting through a dense mix.</li>
+<li><strong>5 kHz</strong> — Pick attack and string detail.</li>
+<li><strong>8 kHz</strong> — The classic Pultec "air" frequency. Adds sheen without harshness.</li>
+<li><strong>10 kHz</strong> — Brighter, glassier high end.</li>
+<li><strong>16 kHz</strong> — Open top — feel rather than a specific frequency you can point at.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="High Boost" src="images/params/hf_boost.png" /></div><div class="body"><h3>High Boost</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 10</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>Boost amount at the selected <strong>High Freq</strong>. The Pultec high band has a famously musical character — push it harder than you would on a normal EQ; it stays sweet rather than turning brittle. Pair with <strong>Bandwidth</strong> to control how broad or focused the lift is.</p>
+</div></div><div class="param"><div class="img"><img alt="Bandwidth" src="images/params/bandwidth.png" /></div><div class="body"><h3>Bandwidth</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 10</li>
+<li><strong>Default:</strong> 5</li>
+</ul>
+<p>The Q (width) of the high-frequency boost peak. Low values make the boost narrow and surgical — useful for picking out a specific harmonic. High values make it broad and gentle, the way most engineers actually use a Pultec for high-end air. The default sits in the middle.</p>
+</div></div><div class="param"><div class="img"><img alt="Atten Freq" src="images/params/hf_atten_freq.png" /></div><div class="body"><h3>Atten Freq</h3>
+<ul class="spec">
+<li><strong>Options:</strong> 5 kHz, 10 kHz, 20 kHz</li>
+</ul>
+<p>Centre frequency for the high-frequency <em>cut</em>, separate from the boost frequency. Lets you boost at one high frequency and cut at another — useful for adding sheen at 8 kHz while taming harshness at 5 kHz, for example.</p>
+<ul>
+<li><strong>5 kHz</strong> — Tame upper-mid bite or pick noise.</li>
+<li><strong>10 kHz</strong> — General brightness reduction.</li>
+<li><strong>20 kHz</strong> — Roll off the very top edge — feel-only adjustment.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="High Atten" src="images/params/hf_atten.png" /></div><div class="body"><h3>High Atten</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 10</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>Cut amount at the <strong>Atten Freq</strong>. Use it to roll off harshness without affecting the air added by the boost band. The Pultec high-cut is gentle and broad — closer to a tilt than a notch — so it sounds natural even at heavy settings.</p>
+</div></div><div class="param"><div class="img"><img alt="Gain" src="images/params/gain.png" /></div><div class="body"><h3>Gain</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -12 to 12 dB</li>
+<li><strong>Default:</strong> 0 dB</li>
+</ul>
+<p>Output level. EQ moves change perceived loudness — use Gain to match the bypassed and engaged volumes so engaging Pultrick is a tonal change, not a level jump. Pushing this hot also drives the modelled output stage a little harder, adding subtle saturation if you want it.</p></div></div>
+<div class="footer-note">Cognate Audio · cognate.audio</div>
+</body>
+</html>

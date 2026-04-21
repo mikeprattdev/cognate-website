@@ -1,0 +1,20 @@
+[
+  {
+    "id": "01-bootsy-baby",
+    "name": "Bootsy Baby!",
+    "description": "The gooey, bubbly sound of Bootsy Collins' Mu-Tron from 70's era P-Funk",
+    "pages": 2
+  },
+  {
+    "id": "02-sexy-psycho",
+    "name": "Sexy Psycho",
+    "description": "Flea used an EHX Q-Tron with a flat battery for this RHCP classic distorted filter sound",
+    "pages": 2
+  },
+  {
+    "id": "03-karma-leon",
+    "name": "Karma-leon",
+    "description": "Herbie's 1973 funk classic is of course played on an ARP Odyssey, but we can get close - play staccato or palm mute to catch the vibe",
+    "pages": 2
+  }
+]

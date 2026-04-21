@@ -1,0 +1,39 @@
+{
+  "categories_to_show": ["Utilities", "Overdrive & Distortion", "EQs, Filters & Dynamics", "Modulation & Pitch"],
+  "category_display": {
+    "Utilities": {
+      "label": "Utilities",
+      "description": "Practice and utility tools for your pedalboard",
+      "accent": "cognate-orange"
+    },
+    "Overdrive & Distortion": {
+      "label": "Overdrive & Distortion",
+      "description": "Grit, crunch and lo-fi character",
+      "accent": "cognate-dark"
+    },
+    "EQs, Filters & Dynamics": {
+      "label": "EQs, Filters & Dynamics",
+      "description": "Filters, EQ and envelope control",
+      "accent": "cognate-red"
+    },
+    "Modulation & Pitch": {
+      "label": "Modulation & Pitch",
+      "description": "Width, movement and spatial effects",
+      "accent": "cognate-orange"
+    }
+  },
+  "category_aliases": {
+    "EQs, Filters and Dynamics": "EQs, Filters & Dynamics"
+  },
+  "plugins": {
+    "Cognate Metro": {
+      "badge": "Free"
+    },
+    "Cognate Chord": {},
+    "Cognate Bitcrush": {},
+    "Cognate Hologram": {},
+    "Cognate Kinetic": {},
+    "Cognate Pultrick": {},
+    "Cognate Ringmod": {}
+  }
+}

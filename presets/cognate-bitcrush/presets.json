@@ -1,0 +1,20 @@
+[
+  {
+    "id": "01-digistortion",
+    "name": "Digistortion",
+    "description": "hits differently when it's 8 bit, sample & hold, bit reverse, envelope modded...",
+    "pages": 2
+  },
+  {
+    "id": "02-logic-gate",
+    "name": "Logic Gate",
+    "description": "Modulo and 5 bits make a great, beefy gated fuzz",
+    "pages": 2
+  },
+  {
+    "id": "03-octave-crush",
+    "name": "Octave Crush",
+    "description": "Bitcrush sounds great after octave pedals, Sublemon in this case",
+    "pages": 2
+  }
+]

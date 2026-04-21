@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cognate Metro — Manual</title>
+<style>
+/* Cognate Audio plugin manual — shared HTML + PDF stylesheet */
+
+@page {
+    size: A4;
+    margin: 10mm 16mm 14mm 16mm;
+    @bottom-left {
+        content: "Cognate Metro";
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+    @bottom-center {
+        content: counter(page) " / " counter(pages);
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+}
+
+/* The first page is taller (cover, logo, block image, at-a-glance) so it
+   keeps the larger top margin. Subsequent pages tighten up. */
+@page :first {
+    margin-top: 18mm;
+}
+
+:root {
+    --accent: #f0a020;
+    --ink: #1a1a1a;
+    --muted: #666;
+    --rule: #e4e4e4;
+    --panel: #f7f7f7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+}
+
+/* Web wrapper (ignored by PDF) */
+body.web {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 28px 64px;
+}
+
+.cover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+}
+
+.cover .logo {
+    height: 38px;
+}
+
+.cover .release {
+    text-align: right;
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.cover .release strong {
+    color: var(--ink);
+}
+
+.title-block {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 8px 0 18px;
+}
+
+.title-block img.block {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.title-block h1 {
+    font-size: 26pt;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+}
+
+.title-block .tagline {
+    color: var(--muted);
+    font-size: 11pt;
+    margin: 0;
+}
+
+h2 {
+    font-size: 15pt;
+    margin: 26px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+}
+
+h3 {
+    font-size: 12.5pt;
+    margin: 22px 0 8px;
+    color: var(--accent);
+    page-break-after: avoid;
+}
+
+p { margin: 0 0 10px; }
+
+ul { margin: 0 0 12px 18px; padding: 0; }
+li { margin: 2px 0; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 14px;
+    font-size: 10pt;
+}
+
+table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+}
+
+table td:first-child {
+    width: 30%;
+    color: var(--muted);
+}
+
+/* Full-page panel screenshots at the top of the Parameters section */
+.page-overview {
+    margin: 0 0 22px;
+    page-break-inside: avoid;
+}
+
+.page-overview img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    margin-bottom: 4px;
+}
+
+.page-overview .caption {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 0 14px;
+}
+
+/* Each param block: image left, content right */
+.param {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin: 0 0 18px;
+    padding: 12px;
+    background: var(--panel);
+    border-radius: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.param .img {
+    flex: 0 0 180px;
+}
+
+.param .img img {
+    width: 100%;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.param .body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.param .body h3 {
+    margin-top: 0;
+}
+
+.param .body ul.spec {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 9.5pt;
+    color: var(--muted);
+}
+
+.param .body ul.spec li {
+    display: inline-block;
+    margin-right: 14px;
+}
+
+.param .body ul.spec li strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 9.5pt;
+    background: #ececec;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+strong { font-weight: 600; }
+
+/* Tip / note callouts could be added later */
+.note {
+    background: #fff7e6;
+    border-left: 3px solid var(--accent);
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 10pt;
+}
+
+.footer-note {
+    margin-top: 36px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+}
+
+</style>
+</head>
+<body class="web">
+<header class="site-strip" style="max-width:780px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;">
+<a href="../../index.html" style="display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;">
+<img src="../../images/logo-symbol.png" alt="Cognate Audio" style="height:24px;"><span style="font-weight:500;color:#4B5563;">Cognate Audio</span>
+</a>
+<nav style="display:flex;gap:18px;align-items:center;">
+<a href="../../plugins/cognate-metro.html" style="color:#4B5563;text-decoration:none;">← Back to Cognate Metro</a>
+<a href="cognate-metro.pdf" style="color:#F2694A;text-decoration:none;font-weight:500;">Download PDF</a>
+</nav>
+</header>
+
+<div class="cover">  <img class="logo" src="../../images/logo-primary.png" alt="Cognate Audio">  <div class="release">    <strong>v1.01</strong><br>    06/04/2026  </div></div>
+<div class="title-block">  <img class="block" src="images/block.png" alt="block">  <div>    <h1>Cognate Metro</h1>    <p class="tagline">Utilities</p>  </div></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>Utilities</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Mono in / mono out</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td>1.01 (06/04/2026)</td>
+</tr>
+</tbody>
+</table>
+<h2>Overview</h2>
+<p>Cognate Metro is a free metronome block for the Darkglass Anagram, designed to help you practice and improve your internal sense of time. It covers all the basics — bass-friendly click sounds, common and irregular time signatures, and tempo control by direct entry, host sync, tap, or by simply playing a few notes on your bass. Beyond the basics, it includes two features aimed squarely at building rhythmic skill: <strong>Gap mode</strong>, which progressively strips beats and bars out of the click so you have to hold the pulse yourself, and <strong>Accuracy</strong>, a readout that tells you how far ahead or behind the beat you actually are.</p>
+<h2>Use cases</h2>
+<ul>
+<li><strong>Live click track.</strong> A clean, bass-friendly metronome for in-ear monitoring on stage.</li>
+<li><strong>Pacing a song from slow to tempo.</strong> Start under tempo and work up gradually as the part becomes comfortable.</li>
+<li><strong>Building internal time.</strong> Use Gap mode to wean yourself off a constant click — the goal isn't to play <em>with</em> the metronome but to <em>be</em> the metronome.</li>
+<li><strong>Diagnosing rush and drag.</strong> Watch the Accuracy readout while you play to see whether you're consistently ahead or behind, and by how much.</li>
+<li><strong>Practising odd metres.</strong> 5/4, 7/4 and the compound 6/8, 9/8, 12/8 patterns are built in.</li>
+<li><strong>Tempo discovery.</strong> Got a riff but no idea what BPM it is? Switch to Follow Tempo and play — Cognate Metro locks on to you.</li>
+</ul>
+<h2>Parameters</h2>
+<div class="page-overview"><img alt="Page 1" src="images/pages/page-1.png" /><p class="caption">Page 1 of 2</p></div>
+<div class="page-overview"><img alt="Page 2" src="images/pages/page-2.png" /><p class="caption">Page 2 of 2</p></div>
+<div class="param"><div class="img"><img alt="Bypass" src="images/params/bypass.png" /></div><div class="body"><h3>Bypass</h3>
+<ul class="spec">
+<li><strong>Type:</strong> Toggle in the centre of the top bar</li>
+</ul>
+<p>Turns off the metronome click and passes your bass's signal directly through to the next block in the signal chain. Use it to silence the click between songs without removing Metro from your preset, or to A/B the click against silence while you check your timing on your own.</p>
+</div></div><div class="param"><div class="img"><img alt="Tempo" src="images/params/tempo.png" /></div><div class="body"><h3>Tempo</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 500 BPM</li>
+<li><strong>Default:</strong> 120 BPM</li>
+<li><strong>Special:</strong> <code>0</code> = "Listening"</li>
+</ul>
+<p>Sets the click tempo in beats per minute when <strong>Mode</strong> is set to <em>Fixed Tempo</em>. The full range covers everything from very slow practice tempos up to drum-and-bass and gabber territory.</p>
+<p>Setting Tempo to <strong>0</strong> puts the plugin into <strong>Listening</strong> mode: no click is produced, but the tempo display still tracks whatever you play. Useful for checking the tempo of an idea without committing to an audible click.</p>
+</div></div><div class="param"><div class="img"><img alt="Mode" src="images/params/mode.png" /></div><div class="body"><h3>Mode</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Fixed Tempo, Follow Tempo, Global Tempo</li>
+</ul>
+<p>Selects how the metronome decides on its tempo.</p>
+<ul>
+<li><strong>Fixed Tempo</strong> — The click follows the <strong>Tempo</strong> parameter. The standard "set the dial and play" mode.</li>
+<li><strong>Follow Tempo</strong> — Cognate Metro listens to your bass and locks onto whatever tempo you play. Strum a few notes in time and the click falls in with you. A faster, hands-free alternative to tap tempo.</li>
+<li><strong>Global Tempo</strong> — The click follows Anagram's global tempo, so it stays in sync with other tempo-aware blocks (delays, modulation, etc.) and any external tempo source the device is using.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Time Signature" src="images/params/time_signature.png" /></div><div class="body"><h3>Time Signature</h3>
+<ul class="spec">
+<li><strong>Options:</strong> 2/4, 3/4, 4/4, 5/4, 7/4, 6/8, 9/8, 12/8</li>
+</ul>
+<p>Sets the metre of the click. The first beat of each bar is accented so you can hear the bar boundary.</p>
+<ul>
+<li><strong>2/4, 3/4, 4/4</strong> — Standard simple metres.</li>
+<li><strong>5/4, 7/4</strong> — Asymmetric metres for odd-time practice.</li>
+<li><strong>6/8, 9/8, 12/8</strong> — Compound metres, with the beat felt as dotted-quarter groupings.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Sound" src="images/params/sound.png" /></div><div class="body"><h3>Sound</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Click, Woodblock, Clap, Shaker, Sticks</li>
+</ul>
+<p>Selects the click sample. Each option is voiced to sit clearly above bass without masking the low end you're trying to play.</p>
+<ul>
+<li><strong>Click</strong> — A neutral, percussive click. The default if in doubt.</li>
+<li><strong>Woodblock</strong> — Warm, rounded attack — easier on the ears for long sessions.</li>
+<li><strong>Clap</strong> — Broadband, cuts through a busy mix.</li>
+<li><strong>Shaker</strong> — Softer transient; useful for ballads or anywhere a hard click would be intrusive.</li>
+<li><strong>Sticks</strong> — Sharp, dry, similar to a drumstick rim click.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Level" src="images/params/level.png" /></div><div class="body"><h3>Level</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -40 to 12 dB</li>
+<li><strong>Default:</strong> -6 dB</li>
+<li><strong>Special:</strong> <code>-40</code> = "-Inf"</li>
+</ul>
+<p>Output level of the click. Set it relative to your bass signal — high enough to play to comfortably, low enough not to fatigue you over a long session. Turning fully down (<code>-Inf</code>) silences the click without disabling the plugin, which is useful for the Gap mode practice trick of muting the metronome at will.</p>
+</div></div><div class="param"><div class="img"><img alt="Gap Mode" src="images/params/gap_mode.png" /></div><div class="body"><h3>Gap Mode</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Off, 1 Bar On/Off, 2 Bars On/Off, 3 On, 1 Off, 1 On, 3 Off, 4 Bars On/Off, Beat 1 Only, Beats 1 &amp; 3, Beats 2 &amp; 4, Random 30%, Random 60%, Random 90%</li>
+</ul>
+<p>Removes part of the click on a repeating pattern, forcing you to hold the pulse internally during the gaps. This is the heart of Cognate Metro's practice philosophy: a metronome that's always playing teaches you to follow it, but a metronome that comes and goes teaches you to <em>be</em> it.</p>
+<ul>
+<li><strong>Off</strong> — A normal, continuous click.</li>
+<li><strong>1 Bar On/Off, 2 Bars On/Off, 4 Bars On/Off</strong> — Alternates whole bars of click and silence in increasing lengths. Start at 1 bar and work up — 4 bars on/off is genuinely difficult.</li>
+<li><strong>3 On, 1 Off</strong> — Three bars of click, one bar of silence. A gentler ratio for getting started.</li>
+<li><strong>1 On, 3 Off</strong> — One bar of click then three bars of silence. The opposite extreme: a check-in beat every four bars.</li>
+<li><strong>Beat 1 Only</strong> — Only the downbeat of each bar plays. Forces you to feel the subdivisions yourself.</li>
+<li><strong>Beats 1 &amp; 3 / Beats 2 &amp; 4</strong> — Half the beats in each bar. <em>Beats 2 &amp; 4</em> is the classic backbeat-only practice; harder than it sounds.</li>
+<li><strong>Random 30% / 60% / 90%</strong> — Each click has the given probability of <em>being dropped</em>. Random 30% removes nearly a third of the clicks; Random 90% removes almost all of them. The unpredictability prevents you from learning the pattern.</li>
+</ul>
+<p>After any gap, the click returns and you can immediately hear whether you drifted.</p>
+</div></div><div class="param"><div class="img"><img alt="Accuracy" src="images/params/accuracy.png" /></div><div class="body"><h3>Accuracy</h3>
+<ul class="spec">
+<li><strong>Type:</strong> Readout (set by the plugin, not user-controlled)</li>
+<li><strong>Range:</strong> -50 to 50 ms</li>
+<li><strong>Default:</strong> 0 ms</li>
+</ul>
+<p>A readout, not a control. Cognate Metro listens to your bass while you play along with the click and reports your timing offset relative to the beat in milliseconds. <strong>Negative</strong> values mean you're playing <em>ahead</em> of the beat (rushing); <strong>positive</strong> values mean you're <em>behind</em> (dragging). The display averages over recent notes so it doesn't jitter on every hit.</p>
+<p>This is the kind of feedback that's almost impossible to get from listening alone — most players have a consistent bias they can't hear. Watch the readout while you play and you'll find out which side of the beat you live on.</p></div></div>
+<div class="footer-note">Cognate Audio · cognate.audio</div>
+</body>
+</html>

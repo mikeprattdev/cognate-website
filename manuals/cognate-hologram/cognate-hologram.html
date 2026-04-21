@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cognate Hologram — Manual</title>
+<style>
+/* Cognate Audio plugin manual — shared HTML + PDF stylesheet */
+
+@page {
+    size: A4;
+    margin: 10mm 16mm 14mm 16mm;
+    @bottom-left {
+        content: "Cognate Hologram";
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+    @bottom-center {
+        content: counter(page) " / " counter(pages);
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+}
+
+/* The first page is taller (cover, logo, block image, at-a-glance) so it
+   keeps the larger top margin. Subsequent pages tighten up. */
+@page :first {
+    margin-top: 18mm;
+}
+
+:root {
+    --accent: #f0a020;
+    --ink: #1a1a1a;
+    --muted: #666;
+    --rule: #e4e4e4;
+    --panel: #f7f7f7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+}
+
+/* Web wrapper (ignored by PDF) */
+body.web {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 28px 64px;
+}
+
+.cover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+}
+
+.cover .logo {
+    height: 38px;
+}
+
+.cover .release {
+    text-align: right;
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.cover .release strong {
+    color: var(--ink);
+}
+
+.title-block {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 8px 0 18px;
+}
+
+.title-block img.block {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.title-block h1 {
+    font-size: 26pt;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+}
+
+.title-block .tagline {
+    color: var(--muted);
+    font-size: 11pt;
+    margin: 0;
+}
+
+h2 {
+    font-size: 15pt;
+    margin: 26px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+}
+
+h3 {
+    font-size: 12.5pt;
+    margin: 22px 0 8px;
+    color: var(--accent);
+    page-break-after: avoid;
+}
+
+p { margin: 0 0 10px; }
+
+ul { margin: 0 0 12px 18px; padding: 0; }
+li { margin: 2px 0; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 14px;
+    font-size: 10pt;
+}
+
+table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+}
+
+table td:first-child {
+    width: 30%;
+    color: var(--muted);
+}
+
+/* Full-page panel screenshots at the top of the Parameters section */
+.page-overview {
+    margin: 0 0 22px;
+    page-break-inside: avoid;
+}
+
+.page-overview img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    margin-bottom: 4px;
+}
+
+.page-overview .caption {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 0 14px;
+}
+
+/* Each param block: image left, content right */
+.param {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin: 0 0 18px;
+    padding: 12px;
+    background: var(--panel);
+    border-radius: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.param .img {
+    flex: 0 0 180px;
+}
+
+.param .img img {
+    width: 100%;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.param .body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.param .body h3 {
+    margin-top: 0;
+}
+
+.param .body ul.spec {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 9.5pt;
+    color: var(--muted);
+}
+
+.param .body ul.spec li {
+    display: inline-block;
+    margin-right: 14px;
+}
+
+.param .body ul.spec li strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 9.5pt;
+    background: #ececec;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+strong { font-weight: 600; }
+
+/* Tip / note callouts could be added later */
+.note {
+    background: #fff7e6;
+    border-left: 3px solid var(--accent);
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 10pt;
+}
+
+.footer-note {
+    margin-top: 36px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+}
+
+</style>
+</head>
+<body class="web">
+<header class="site-strip" style="max-width:780px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;">
+<a href="../../index.html" style="display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;">
+<img src="../../images/logo-symbol.png" alt="Cognate Audio" style="height:24px;"><span style="font-weight:500;color:#4B5563;">Cognate Audio</span>
+</a>
+<nav style="display:flex;gap:18px;align-items:center;">
+<a href="../../plugins/cognate-hologram.html" style="color:#4B5563;text-decoration:none;">← Back to Cognate Hologram</a>
+<a href="cognate-hologram.pdf" style="color:#F2694A;text-decoration:none;font-weight:500;">Download PDF</a>
+</nav>
+</header>
+
+<div class="cover">  <img class="logo" src="../../images/logo-primary.png" alt="Cognate Audio">  <div class="release">    <strong>v1.01</strong><br>    06/04/2026  </div></div>
+<div class="title-block">  <img class="block" src="images/block.png" alt="block">  <div>    <h1>Cognate Hologram</h1>    <p class="tagline">Modulation & Pitch</p>  </div></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>Modulation &amp; Pitch</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Stereo in / stereo out (sum-to-mono on Anagram — see note)</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td>1.01 (06/04/2026)</td>
+</tr>
+</tbody>
+</table>
+<h2>Overview</h2>
+<p>Cognate Hologram is a stereo spatialiser built specifically for bass. It takes a mono signal and gives it width and movement without losing the low-end solidity that makes bass sit in a mix. Four classic mono-to-stereo methods cover a range of characters, from subtle studio shimmer to lush synth-style unison; <strong>Low Mono</strong> anchors fundamentals in the centre so nothing wanders, and every mode collapses cleanly to mono with no phase cancellation or disappearing frequencies. Go beyond chorus. Still bass.</p>
+<h2>Use cases</h2>
+<ul>
+<li><strong>Studio-double thickness.</strong> <em>Micropitch</em> for the classic doubled-bass sound used on a thousand records.</li>
+<li><strong>Synth-lead density.</strong> <em>Hyper</em> for a dense unison stack when bass is carrying the top line.</li>
+<li><strong>Room-filling solo tones.</strong> <em>Dimension</em> or <em>Doubler</em> to turn a clean DI into a wide, 3D sound without flange artefacts.</li>
+<li><strong>Chorus-replacement.</strong> Where a traditional chorus would wash out the fundamental, Hologram keeps the low end anchored.</li>
+<li><strong>Live stereo rig.</strong> Drive a stereo backline or in-ear mix with genuine stereo bass without losing punch.</li>
+<li><strong>Final shine on a preset.</strong> Low <em>Depth</em>, low <em>Modulation</em>, a touch of <em>Width</em> — a subtle wide-and-alive finish that doesn't announce itself.</li>
+</ul>
+<h2>Parameters</h2>
+<div class="page-overview"><img alt="Page 1" src="images/pages/page-1.png" /><p class="caption">Full panel layout</p></div>
+<div class="param"><div class="img"><img alt="Bypass" src="images/params/bypass.png" /></div><div class="body"><h3>Bypass</h3>
+<ul class="spec">
+<li><strong>Type:</strong> Toggle in the centre of the top bar</li>
+</ul>
+<p>Turns off the spatialiser and passes your bass straight through mono. Use it to A/B the effect against the dry signal, or to silence the processing between songs without removing Hologram from your preset.</p>
+</div></div><div class="param"><div class="img"><img alt="Type" src="images/params/type.png" /></div><div class="body"><h3>Type</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Micropitch, Dimension, Hyper, Doubler</li>
+</ul>
+<p>Selects the underlying mono-to-stereo algorithm. Each one has a distinct character — start here and use <strong>Depth</strong> and <strong>Modulation</strong> to tune the flavour.</p>
+<ul>
+<li><strong>Micropitch</strong> — Fine pitch shifting combined with short delays. The classic studio-doubling sound: thick, solid, vintage.</li>
+<li><strong>Dimension</strong> — Homage to the Roland SDD-320 Dimension D. Lush, stable stereo spread without obvious wobble. The most "mixed-record" sound in the plugin.</li>
+<li><strong>Hyper</strong> — Stacked unison voices in the style of a modern Serum-style supersaw. Dense and synth-like.</li>
+<li><strong>Doubler</strong> — Flanger-derived doubling inspired by the MXR Model 126. Organic and BBD-coloured, with a slight analogue width movement.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Depth" src="images/params/depth.png" /></div><div class="body"><h3>Depth</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 100 %</li>
+<li><strong>Default:</strong> 50 %</li>
+</ul>
+<p>How much of the effect you're hearing. At low settings it's a gentle wideness around the dry signal; at the top it's the effect in full. Every mode stays usable across the full range — crank it without worrying about phase-wrecking the low end.</p>
+</div></div><div class="param"><div class="img"><img alt="Modulation" src="images/params/modulation.png" /></div><div class="body"><h3>Modulation</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 100 %</li>
+<li><strong>Default:</strong> 50 %</li>
+</ul>
+<p>Controls how much internal movement the effect has — the amount of slow pitch or delay modulation inside the selected <strong>Type</strong>. Low settings are still and glassy; higher settings add organic motion and depth. Sweet spot is usually around the default; beyond that you start to hear the modulation as obvious wobble, which is sometimes the point.</p>
+</div></div><div class="param"><div class="img"><img alt="Width" src="images/params/width.png" /></div><div class="body"><h3>Width</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 100 %</li>
+<li><strong>Default:</strong> 0 %</li>
+</ul>
+<p>A carefully tuned mid/side enhancer applied after the main effect, for when you need the stereo image to go further than the algorithm alone provides. At <strong>0%</strong> the image is what the selected <strong>Type</strong> produces natively; as you increase, the side information is boosted relative to the mid, exaggerating the spread. Still mono-compatible at any setting.</p>
+</div></div><div class="param"><div class="img"><img alt="Low Mono" src="images/params/lowMono.png" /></div><div class="body"><h3>Low Mono</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 50 to 500 Hz</li>
+<li><strong>Default:</strong> 90 Hz</li>
+</ul>
+<p>Frequencies below this point are kept mono — they aren't widened, modulated, or stereo-enhanced. This is the trick that makes Hologram usable on bass: the fundamentals and body of every note stay rock-solid in the centre of the image, while only the harmonics get the stereo treatment. The default sits just above a typical low-B fundamental. Move it higher if the effect is still affecting the feel of your low end; move it lower for more wideness on deep notes at the cost of some image stability.</p>
+</div></div><div class="param"><div class="img"><img alt="Level" src="images/params/level.png" /></div><div class="body"><h3>Level</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -40 to 12 dB</li>
+<li><strong>Default:</strong> 0 dB</li>
+</ul>
+<p>Output trim. Most of the Type + Depth combinations don't shift perceived loudness much, but turning Depth up can add a small amount of output energy — use Level to match the bypassed and engaged volumes.</p></div></div>
+<div class="footer-note">Cognate Audio · cognate.audio</div>
+</body>
+</html>

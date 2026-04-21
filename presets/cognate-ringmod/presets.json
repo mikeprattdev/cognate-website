@@ -1,0 +1,20 @@
+[
+  {
+    "id": "01-phasemod",
+    "name": "Phasemod",
+    "description": "Lurking in the low frequency end of Ringmod is a lovely subtle phaser. The Envelope and LFO give extra movement to the modulation.",
+    "pages": 2
+  },
+  {
+    "id": "02-8ve-0-8",
+    "name": "8ve 0 8",
+    "description": "Ringmod's pitch tracking coupled with a square wave carrier gets you close to the OC-2 vibe, here with a little envelope pitch drop for an 808 flavour.",
+    "pages": 2
+  },
+  {
+    "id": "03-space-invasion",
+    "name": "Space Invasion",
+    "description": "Ringmod excels for all your sci-fi sfx needs!",
+    "pages": 2
+  }
+]
