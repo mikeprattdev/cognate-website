@@ -128,15 +128,15 @@ def draw_grid_overlay(img: Image.Image) -> None:
     step = 32 * SS
     line_w = 1 * SS
     for x in range(0, img.width, step):
-        gd.line([(x, 0), (x, img.height)], fill=(255, 255, 255, 26), width=line_w)
+        gd.line([(x, 0), (x, img.height)], fill=(255, 255, 255, 21), width=line_w)
     for y in range(0, img.height, step):
-        gd.line([(0, y), (img.width, y)], fill=(255, 255, 255, 26), width=line_w)
+        gd.line([(0, y), (img.width, y)], fill=(255, 255, 255, 21), width=line_w)
     mask = Image.new("L", img.size, 0)
     md = ImageDraw.Draw(mask)
     cx, cy = int(img.width * 0.25), int(img.height * 0.55)
     max_r = 480 * SS
     for r in range(max_r, 0, -6):
-        alpha = max(0, int(220 * (1 - r / max_r) ** 1.4))
+        alpha = max(0, int(176 * (1 - r / max_r) ** 1.4))
         md.ellipse((cx - r, cy - r, cx + r, cy + r), fill=alpha)
     grid.putalpha(mask)
     img.alpha_composite(grid)
@@ -249,6 +249,159 @@ def build_card(block: dict) -> Image.Image:
     return img.resize((CARD_W, CARD_H), Image.LANCZOS).convert("RGB")
 
 
+def build_site_card() -> Image.Image:
+    """Generic site-wide OG card: primary Cognate logo, tagline, Anagram photo."""
+    W, H = CARD_W * SS, CARD_H * SS
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    draw = ImageDraw.Draw(img)
+    draw_background(draw, W, H)
+    draw_grid_overlay(img)
+
+    # Soften the grid in the centre: a radial black overlay (20% → 0%) that
+    # fades away before reaching the edges, so grid stays crisp at corners.
+    grid_softener = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    gs_mask = Image.new("L", (W, H), 0)
+    gsm = ImageDraw.Draw(gs_mask)
+    cx, cy = W // 2, H // 2
+    max_r = int(min(W, H) * 0.55)
+    for r in range(max_r, 0, -4):
+        alpha = max(0, int(51 * (1 - r / max_r) ** 1.2))
+        gsm.ellipse((cx - r, cy - r, cx + r, cy + r), fill=alpha)
+    grid_softener.putalpha(gs_mask)
+    img.alpha_composite(grid_softener)
+
+    draw_orange_glow(img)
+
+    # Photo panel — right column
+    panel_x = int(W * 0.56)
+    panel_y = 60 * SS
+    panel_w = W - panel_x - 60 * SS
+    panel_h = H - 120 * SS
+
+    panel = Image.new("RGBA", (panel_w, panel_h), (0, 0, 0, 0))
+    pmask = Image.new("L", (panel_w, panel_h), 0)
+    ImageDraw.Draw(pmask).rounded_rectangle(
+        (0, 0, panel_w, panel_h), radius=20 * SS, fill=255)
+
+    # Dark fill for the panel (slightly lighter than card bg so the photo sits on
+    # a distinct rounded plate).
+    fill = Image.new("RGBA", (panel_w, panel_h), (14, 20, 30, 255))
+    fill.putalpha(pmask)
+    panel.alpha_composite(fill)
+
+    anagram_path = SITE / "images" / "anagram-34.png"
+    if anagram_path.exists():
+        src = Image.open(anagram_path).convert("RGBA")
+        # Crop through the photo's blank border by zooming past contain-fit.
+        scale = min(panel_w / src.width, panel_h / src.height) * 1.43
+        new_w = int(src.width * scale)
+        new_h = int(src.height * scale)
+        new = src.resize((new_w, new_h), Image.LANCZOS)
+        # Centred, shifted up by 20px (in final pixels) so we have room below for the blocks.
+        px = (panel_w - new_w) // 2
+        py = (panel_h - new_h) // 2 - 20 * SS
+        panel.alpha_composite(new, (px, py))
+
+    # Row of 7 block silhouettes overlapping across the lower half of the panel.
+    block_pngs = [SITE / b["block_img"] for b in BLOCKS]
+    block_pngs = [p for p in block_pngs if p.exists()]
+    if block_pngs:
+        block_size = 128 * SS
+        overlap = int(block_size * 0.45)          # positive = images overlap
+        step = block_size - overlap
+        n = len(block_pngs)
+        row_w = block_size + (n - 1) * step
+        row_x = (panel_w - row_w) // 2
+        row_y = panel_h - block_size - 38 * SS
+        for i, bp in enumerate(block_pngs):
+            bi = Image.open(bp).convert("RGBA")
+            bi.thumbnail((block_size, block_size), Image.LANCZOS)
+            # Subtle shadow so they read as stacked plates.
+            sh = Image.new("RGBA", (bi.width + 24 * SS, bi.height + 24 * SS), (0, 0, 0, 0))
+            ImageDraw.Draw(sh).rounded_rectangle(
+                (10 * SS, 16 * SS, sh.width - 10 * SS, sh.height - 6 * SS),
+                radius=18 * SS, fill=(0, 0, 0, 180))
+            sh = sh.filter(ImageFilter.GaussianBlur(10 * SS))
+            panel.alpha_composite(sh, (row_x + i * step - 12 * SS, row_y - 12 * SS))
+            panel.alpha_composite(bi, (row_x + i * step, row_y))
+
+    # Re-apply the rounded mask to clip any over-hanging pixels.
+    panel.putalpha(pmask)
+
+    # Softer outer drop shadow — more diffuse, lower opacity.
+    shadow = Image.new("RGBA", (panel_w + 80 * SS, panel_h + 80 * SS), (0, 0, 0, 0))
+    sd = ImageDraw.Draw(shadow)
+    sd.rounded_rectangle((40 * SS, 48 * SS, shadow.width - 40 * SS, shadow.height - 32 * SS),
+                         radius=20 * SS, fill=(0, 0, 0, 130))
+    shadow = shadow.filter(ImageFilter.GaussianBlur(36 * SS))
+    img.alpha_composite(shadow, (panel_x - 40 * SS, panel_y - 24 * SS))
+    img.alpha_composite(panel, (panel_x, panel_y))
+
+    # Darker gradient under the text column so the grid and any residual
+    # photo halo don't reduce contrast. Fades left → right.
+    scrim = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    scrim_draw = ImageDraw.Draw(scrim)
+    scrim_w = int(W * 0.58)
+    for x in range(scrim_w):
+        t = x / scrim_w
+        alpha = int(180 * (1 - t) ** 1.6)
+        if alpha > 0:
+            scrim_draw.line([(x, 0), (x, H)], fill=(6, 9, 14, alpha))
+    img.alpha_composite(scrim)
+
+    fonts_bold = [FONTS_DIR / "grift-bold.ttf",
+                  Path("/System/Library/Fonts/Supplemental/Arial Bold.ttf")]
+    fonts_medium = [FONTS_DIR / "grift-medium.ttf",
+                    Path("/System/Library/Fonts/Supplemental/Arial.ttf")]
+    fonts_regular = [FONTS_DIR / "grift-regular.ttf",
+                     Path("/System/Library/Fonts/Supplemental/Arial.ttf")]
+
+    f_title = load_font(fonts_bold, 72 * SS)
+    f_tag = load_font(fonts_medium, 24 * SS)
+    f_site = load_font(fonts_regular, 22 * SS)
+
+    text_x = 60 * SS
+    text_w = panel_x - text_x - 40 * SS  # leave a clear gap before the photo panel
+
+    # Primary logo at top, left-aligned
+    logo_path = SITE / "images" / "CognateAudioPrimary-Colour White Text @5x.png"
+    logo_bottom = 60 * SS
+    if logo_path.exists():
+        logo = Image.open(logo_path).convert("RGBA")
+        target_h = 84 * SS
+        ratio = target_h / logo.height
+        logo = logo.resize((int(logo.width * ratio), target_h), Image.LANCZOS)
+        img.alpha_composite(logo, (text_x, 60 * SS))
+        logo_bottom = 60 * SS + logo.height
+
+    # Heading
+    y = logo_bottom + 48 * SS
+    draw.text((text_x, y), "Blocks.", font=f_title, fill=TEXT_MAIN)
+    bb = draw.textbbox((text_x, y), "Blocks.", font=f_title)
+    unlocked_x = bb[2] + 20 * SS
+    if unlocked_x + 320 * SS < text_x + text_w:
+        draw.text((unlocked_x, y), "Unlocked.", font=f_title, fill=ORANGE)
+        y += 92 * SS
+    else:
+        y += 84 * SS
+        draw.text((text_x, y), "Unlocked.", font=f_title, fill=ORANGE)
+        y += 84 * SS
+
+    # Paragraph — two fixed lines
+    y += 10 * SS
+    for line in [
+        "Creative, useful blocks for Darkglass Anagram.",
+        "Built by bassists, for bassists.",
+    ]:
+        draw.text((text_x, y), line, font=f_tag, fill=TEXT_SUB)
+        y += 34 * SS
+
+    # Site URL aligned with everything else
+    draw.text((text_x, H - 80 * SS), "cognate.audio", font=f_site, fill=TEXT_SUB)
+
+    return img.resize((CARD_W, CARD_H), Image.LANCZOS).convert("RGB")
+
+
 def main() -> int:
     out_dir_base = SITE / "blocks"
     count = 0
@@ -260,6 +413,12 @@ def main() -> int:
         card.save(out_path, optimize=True)
         print(f"  wrote {out_path.relative_to(PROJ)}")
         count += 1
+    # Site-wide card
+    site_card = build_site_card()
+    site_out = SITE / "og.png"
+    site_card.save(site_out, optimize=True)
+    print(f"  wrote {site_out.relative_to(PROJ)}")
+    count += 1
     print(f"Generated {count} og cards")
     return 0
 
