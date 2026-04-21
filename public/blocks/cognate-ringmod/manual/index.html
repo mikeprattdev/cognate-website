@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cognate Ringmod — Manual</title>
+<style>
+/* Cognate Audio plugin manual — shared HTML + PDF stylesheet */
+
+@page {
+    size: A4;
+    margin: 10mm 16mm 14mm 16mm;
+    @bottom-left {
+        content: "Cognate Ringmod";
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+    @bottom-center {
+        content: counter(page) " / " counter(pages);
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+}
+
+/* The first page is taller (cover, logo, block image, at-a-glance) so it
+   keeps the larger top margin. Subsequent pages tighten up. */
+@page :first {
+    margin-top: 18mm;
+}
+
+:root {
+    --accent: #f0a020;
+    --ink: #1a1a1a;
+    --muted: #666;
+    --rule: #e4e4e4;
+    --panel: #f7f7f7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+}
+
+/* Web wrapper (ignored by PDF) */
+body.web {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 28px 64px;
+}
+
+.cover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+}
+
+.cover .logo {
+    height: 38px;
+}
+
+.cover .release {
+    text-align: right;
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.cover .release strong {
+    color: var(--ink);
+}
+
+.title-block {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 8px 0 18px;
+}
+
+.title-block img.block {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.title-block h1 {
+    font-size: 26pt;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+}
+
+.title-block .tagline {
+    color: var(--muted);
+    font-size: 11pt;
+    margin: 0;
+}
+
+h2 {
+    font-size: 15pt;
+    margin: 26px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+}
+
+h3 {
+    font-size: 12.5pt;
+    margin: 22px 0 8px;
+    color: var(--accent);
+    page-break-after: avoid;
+}
+
+p { margin: 0 0 10px; }
+
+ul { margin: 0 0 12px 18px; padding: 0; }
+li { margin: 2px 0; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 14px;
+    font-size: 10pt;
+}
+
+table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+}
+
+table td:first-child {
+    width: 30%;
+    color: var(--muted);
+}
+
+/* Full-page panel screenshots at the top of the Parameters section */
+.page-overview {
+    margin: 0 0 22px;
+    page-break-inside: avoid;
+}
+
+.page-overview img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    margin-bottom: 4px;
+}
+
+.page-overview .caption {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 0 14px;
+}
+
+/* Each param block: image left, content right */
+.param {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin: 0 0 18px;
+    padding: 12px;
+    background: var(--panel);
+    border-radius: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.param .img {
+    flex: 0 0 180px;
+}
+
+.param .img img {
+    width: 100%;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.param .body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.param .body h3 {
+    margin-top: 0;
+}
+
+.param .body ul.spec {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 9.5pt;
+    color: var(--muted);
+}
+
+.param .body ul.spec li {
+    display: inline-block;
+    margin-right: 14px;
+}
+
+.param .body ul.spec li strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 9.5pt;
+    background: #ececec;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+strong { font-weight: 600; }
+
+/* Tip / note callouts could be added later */
+.note {
+    background: #fff7e6;
+    border-left: 3px solid var(--accent);
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 10pt;
+}
+
+.footer-note {
+    margin-top: 36px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+}
+
+</style>
+</head>
+<body class="web">
+<header class="site-strip" style="max-width:780px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;">
+<a href="../../../index.html" style="display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;">
+<img src="../../../images/logo-symbol.png" alt="Cognate Audio" style="height:24px;"><span style="font-weight:500;color:#4B5563;">Cognate Audio</span>
+</a>
+<nav style="display:flex;gap:18px;align-items:center;">
+<a href="../" style="color:#4B5563;text-decoration:none;">← Back to Cognate Ringmod</a>
+<a href="cognate-ringmod.pdf" style="color:#F2694A;text-decoration:none;font-weight:500;">Download PDF</a>
+</nav>
+</header>
+
+<div class="cover">  <img class="logo" src="../../../images/logo-primary.png" alt="Cognate Audio">  <div class="release">    <strong>v1.10</strong><br>    06/04/2026  </div></div>
+<div class="title-block">  <img class="block" src="images/block.png" alt="block">  <div>    <h1>Cognate Ringmod</h1>    <p class="tagline">Modulation & Pitch</p>  </div></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>Modulation &amp; Pitch</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Mono in / mono out</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td>1.10 (06/04/2026)</td>
+</tr>
+</tbody>
+</table>
+<h2>Overview</h2>
+<p>Cognate Ringmod is ring modulation at its most playful — and most controlled. At its core it's a classic ringmod: a carrier oscillator multiplied against your bass, with drive to push it into rougher territory. The <strong>Sidebands</strong> control opens it up further, morphing continuously between lower-sideband frequency shifting, full ring modulation, and upper sideband — everything from subtle pitch displacement to full metallic clang. An expressive envelope section ties the carrier to your playing dynamics; <strong>Tracking</strong> locks the carrier to your bass's pitch for harmonised intervals from an octave down to three octaves up. Stars falling, doom bells, sci-fi aliens, EDM growls — and a surprisingly fat octaver — all in one block.</p>
+<h2>Use cases</h2>
+<ul>
+<li><strong>Metallic clangs and bells.</strong> Mid-range carrier, full ring mod (Sidebands at 0), high Blend.</li>
+<li><strong>Fat octaver.</strong> Turn <strong>Tracking</strong> on, set <strong>Interval</strong> to -12 (octave down) or +12 (octave up), Sine waveform — a surprisingly clean and fat octaver.</li>
+<li><strong>Sci-fi laser zaps.</strong> High Drive, Square waveform, <strong>Env Amount</strong> positive — hit harder for more carrier sweep.</li>
+<li><strong>Doom bells.</strong> Slow envelope, deep Drive, low carrier frequency, partial Blend.</li>
+<li><strong>Subtle pitch displacement.</strong> Sidebands near zero (but not quite), low carrier frequency — adds a chorus-like detune that isn't a chorus.</li>
+<li><strong>Tremolo without tremolo.</strong> Sub-audio Frequency (under 20 Hz), Sine waveform — rhythmic amplitude modulation.</li>
+<li><strong>Pseudo-phasing.</strong> Very slow Frequency, asymmetric blend.</li>
+<li><strong>Stars-falling textures.</strong> Random LFO direction with high carrier — twinkling, glassy, generative.</li>
+<li><strong>EDM growls.</strong> Tracking on, Interval at +7 or +12, fast LFO — dubstep harmoniser.</li>
+</ul>
+<h2>Parameters</h2>
+<div class="page-overview"><img alt="Page 1" src="images/pages/page-1.png" /><p class="caption">Page 1 of 2</p></div>
+<div class="page-overview"><img alt="Page 2" src="images/pages/page-2.png" /><p class="caption">Page 2 of 2</p></div>
+<div class="param"><div class="img"><img alt="Bypass" src="images/params/bypass.png" /></div><div class="body"><h3>Bypass</h3>
+<ul class="spec">
+<li><strong>Type:</strong> Toggle in the centre of the top bar</li>
+</ul>
+<p>Turns off the ring modulator and passes your bass straight through. The plugin stays in your preset, so you can switch the effect in and out without reloading anything.</p>
+</div></div><div class="param"><div class="img"><img alt="Frequency" src="images/params/frequency.png" /></div><div class="body"><h3>Frequency</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0.5 to 20000 Hz</li>
+<li><strong>Default:</strong> 440 Hz</li>
+</ul>
+<p>The carrier oscillator's frequency. The whole character of the effect depends on this:</p>
+<ul>
+<li><strong>Sub-audio (below ~20 Hz)</strong> — The ringmod becomes amplitude modulation: tremolo and pseudo-phaser textures.</li>
+<li><strong>Low audio (20–200 Hz)</strong> — Detuning, beating, and metallic shimmer that interacts with your fundamentals.</li>
+<li><strong>Mid (200 Hz–2 kHz)</strong> — Classic ringmod territory: bells, robots, sci-fi clangs.</li>
+<li><strong>High (2 kHz+)</strong> — Bright, glassy, glitchy artefacts on top of the bass.</li>
+</ul>
+<p>When <strong>Tracking</strong> is on, this control is overridden in favour of <strong>Interval</strong>.</p>
+</div></div><div class="param"><div class="img"><img alt="Waveform" src="images/params/waveform.png" /></div><div class="body"><h3>Waveform</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Sine, Triangle, Square, Saw</li>
+</ul>
+<p>Shape of the carrier oscillator. Each waveform produces a different harmonic interaction with your bass.</p>
+<ul>
+<li><strong>Sine</strong> — Pure tone, fewest sidebands. The cleanest, most musical ringmod sound; the right choice for octaver and harmoniser duty when <strong>Tracking</strong> is on.</li>
+<li><strong>Triangle</strong> — Sine with a touch of grit; subtly more present than pure sine.</li>
+<li><strong>Square</strong> — Heavy with odd harmonics. Buzzy, aggressive, the classic harsh ringmod tone.</li>
+<li><strong>Saw</strong> — Full harmonic spectrum, the most chaotic and richest texture. For sound design and noise.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Drive" src="images/params/drive.png" /></div><div class="body"><h3>Drive</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 1</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>Saturation in front of the modulator. At <strong>0</strong> the multiplication is clean — every artefact is purely the carrier × bass interaction. As you push it, the bass is driven harder before being modulated, generating extra harmonics that interact with the carrier and produce a denser, rougher, more aggressive output. Goes from polite ringmod to full digi-noise across the range.</p>
+</div></div><div class="param"><div class="img"><img alt="Sidebands" src="images/params/sidebands.png" /></div><div class="body"><h3>Sidebands</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -1 to 1</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>Continuously morphs between three modes of operation, all in one knob.</p>
+<ul>
+<li><strong>-1.0</strong> — Pure <strong>lower-sideband frequency shifter</strong>. Shifts the bass <em>down</em> by the carrier frequency, in a non-harmonic way (different from a pitch shifter). Subtle pitch displacement at low carrier frequencies; alien at higher ones.</li>
+<li><strong>0</strong> — Classic <strong>ring modulation</strong>. Both sidebands present — sum and difference frequencies of carrier and bass. Bells, clangs, robots.</li>
+<li><strong>+1.0</strong> — Pure <strong>upper-sideband frequency shifter</strong>. Shifts the bass <em>up</em>. Bright, glassy, often used for sci-fi effects.</li>
+</ul>
+<p>Anywhere in between is a smooth blend. Try mid-positive values for a slightly displaced shimmer over the dry-ish bass.</p>
+</div></div><div class="param"><div class="img"><img alt="Blend" src="images/params/blend.png" /></div><div class="body"><h3>Blend</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 100 %</li>
+<li><strong>Default:</strong> 100 %</li>
+</ul>
+<p>Mixes the modulated signal against the dry bass. At <strong>100%</strong> you only hear the effect; pull it back to keep the dry bass underneath as a foundation for the modulated layer to sit on. For extreme settings (Square waveform, high Drive) blending in some dry signal is often what makes the result musically usable.</p>
+</div></div><div class="param"><div class="img"><img alt="Level" src="images/params/level.png" /></div><div class="body"><h3>Level</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -12 to 12 dB</li>
+<li><strong>Default:</strong> 0 dB</li>
+</ul>
+<p>Output trim. Heavy ring modulation can change perceived loudness in unpredictable ways — use Level to match the bypassed and engaged volumes so kicking the effect on isn't a level surprise.</p>
+</div></div><div class="param"><div class="img"><img alt="Envelope" src="images/params/envelope.png" /></div><div class="body"><h3>Envelope</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 1</li>
+<li><strong>Default:</strong> 0.5</li>
+</ul>
+<p>Shapes the <em>speed</em> of the envelope follower that responds to your playing. Low values give a slow, smooth envelope — the effect breathes with the contour of each note; high values are snappy and zappy, locking onto each pick attack. Pair with <strong>Env Amount</strong> to set how much the envelope actually moves the carrier.</p>
+</div></div><div class="param"><div class="img"><img alt="Env Amount" src="images/params/env_amount.png" /></div><div class="body"><h3>Env Amount</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -100 to 100 %</li>
+<li><strong>Default:</strong> 0 %</li>
+</ul>
+<p>How much — and in which direction — your playing dynamics push the carrier frequency. Bipolar:</p>
+<ul>
+<li><strong>Positive</strong> — Harder playing pushes the carrier <em>up</em>, brightening the modulation as you dig in.</li>
+<li><strong>Negative</strong> — Harder playing pushes the carrier <em>down</em>, getting darker and more aggressive on louder notes.</li>
+<li><strong>0</strong> — No envelope modulation; the carrier sits at <strong>Frequency</strong>.</li>
+</ul>
+<p>Use this to make Ringmod react to your touch instead of just sitting there: hit harder for more, ease off for clean.</p>
+</div></div><div class="param"><div class="img"><img alt="LFO" src="images/params/lfo.png" /></div><div class="body"><h3>LFO</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -100 to 100</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>A single-knob LFO that adds automatic movement to the carrier frequency. Bipolar:</p>
+<ul>
+<li><strong>Positive</strong> — Smooth sine modulation. Wobble, vibrato, dubstep wub depending on rate.</li>
+<li><strong>Negative</strong> — Sample &amp; hold (random stepped). Robotic, glitchy, generative textures — great for "stars falling" sounds with high carrier frequencies.</li>
+<li><strong>0</strong> — Off.</li>
+</ul>
+<p>Combines additively with the envelope, so you can have both touch-responsive <em>and</em> automatic movement at once.</p>
+</div></div><div class="param"><div class="img"><img alt="Tracking" src="images/params/tracking.png" /></div><div class="body"><h3>Tracking</h3>
+<ul class="spec">
+<li><strong>Type:</strong> On / Off</li>
+</ul>
+<p>When on, Ringmod listens to your bass's pitch and locks the carrier oscillator to follow it. <strong>Frequency</strong> is overridden; <strong>Interval</strong> sets the harmonic relationship between the carrier and your fundamental. This is what turns the plugin into a harmoniser or octaver — every note generates its own carrier at the chosen interval, so the modulation result is always musically related to what you're playing.</p>
+</div></div><div class="param"><div class="img"><img alt="Interval" src="images/params/interval.png" /></div><div class="body"><h3>Interval</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -12 to 36</li>
+<li><strong>Default:</strong> 0</li>
+</ul>
+<p>The interval between your bass note and the tracked carrier, in semitones. Only active when <strong>Tracking</strong> is on. Ranges from an octave below (-12) to three octaves above (+36).</p>
+<ul>
+<li><strong>-12</strong> — Octave down. With Sine waveform and full Blend, a fat, clean octaver.</li>
+<li><strong>0</strong> — Carrier matches the fundamental — produces a harmonic-rich doubling of the same note.</li>
+<li><strong>+7</strong> — Perfect fifth above. Power-chord harmoniser.</li>
+<li><strong>+12 / +24</strong> — One or two octaves up. Bright synth-octaver textures.</li>
+<li><strong>+36</strong> — Three octaves up. Glassy, sparkly upper-register sheen.</li>
+</ul>
+<p>Try non-octave intervals (like +5 or +14) for more dissonant, sci-fi harmonisations.</p></div></div>
+<div class="footer-note">Cognate Audio · cognate.audio</div>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cognate Chord — Manual</title>
+<style>
+/* Cognate Audio plugin manual — shared HTML + PDF stylesheet */
+
+@page {
+    size: A4;
+    margin: 10mm 16mm 14mm 16mm;
+    @bottom-left {
+        content: "Cognate Chord";
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+    @bottom-center {
+        content: counter(page) " / " counter(pages);
+        font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+}
+
+/* The first page is taller (cover, logo, block image, at-a-glance) so it
+   keeps the larger top margin. Subsequent pages tighten up. */
+@page :first {
+    margin-top: 18mm;
+}
+
+:root {
+    --accent: #f0a020;
+    --ink: #1a1a1a;
+    --muted: #666;
+    --rule: #e4e4e4;
+    --panel: #f7f7f7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+}
+
+/* Web wrapper (ignored by PDF) */
+body.web {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 28px 64px;
+}
+
+.cover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+}
+
+.cover .logo {
+    height: 38px;
+}
+
+.cover .release {
+    text-align: right;
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.cover .release strong {
+    color: var(--ink);
+}
+
+.title-block {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 8px 0 18px;
+}
+
+.title-block img.block {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.title-block h1 {
+    font-size: 26pt;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+}
+
+.title-block .tagline {
+    color: var(--muted);
+    font-size: 11pt;
+    margin: 0;
+}
+
+h2 {
+    font-size: 15pt;
+    margin: 26px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+}
+
+h3 {
+    font-size: 12.5pt;
+    margin: 22px 0 8px;
+    color: var(--accent);
+    page-break-after: avoid;
+}
+
+p { margin: 0 0 10px; }
+
+ul { margin: 0 0 12px 18px; padding: 0; }
+li { margin: 2px 0; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 14px;
+    font-size: 10pt;
+}
+
+table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+}
+
+table td:first-child {
+    width: 30%;
+    color: var(--muted);
+}
+
+/* Full-page panel screenshots at the top of the Parameters section */
+.page-overview {
+    margin: 0 0 22px;
+    page-break-inside: avoid;
+}
+
+.page-overview img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    margin-bottom: 4px;
+}
+
+.page-overview .caption {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 0 14px;
+}
+
+/* Each param block: image left, content right */
+.param {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin: 0 0 18px;
+    padding: 12px;
+    background: var(--panel);
+    border-radius: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.param .img {
+    flex: 0 0 180px;
+}
+
+.param .img img {
+    width: 100%;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.param .body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.param .body h3 {
+    margin-top: 0;
+}
+
+.param .body ul.spec {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 9.5pt;
+    color: var(--muted);
+}
+
+.param .body ul.spec li {
+    display: inline-block;
+    margin-right: 14px;
+}
+
+.param .body ul.spec li strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 9.5pt;
+    background: #ececec;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+strong { font-weight: 600; }
+
+/* Tip / note callouts could be added later */
+.note {
+    background: #fff7e6;
+    border-left: 3px solid var(--accent);
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 10pt;
+}
+
+.footer-note {
+    margin-top: 36px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+}
+
+</style>
+</head>
+<body class="web">
+<header class="site-strip" style="max-width:780px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;">
+<a href="../../../index.html" style="display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;">
+<img src="../../../images/logo-symbol.png" alt="Cognate Audio" style="height:24px;"><span style="font-weight:500;color:#4B5563;">Cognate Audio</span>
+</a>
+<nav style="display:flex;gap:18px;align-items:center;">
+<a href="../" style="color:#4B5563;text-decoration:none;">← Back to Cognate Chord</a>
+<a href="cognate-chord.pdf" style="color:#F2694A;text-decoration:none;font-weight:500;">Download PDF</a>
+</nav>
+</header>
+
+<div class="cover">  <img class="logo" src="../../../images/logo-primary.png" alt="Cognate Audio">  <div class="release">    <strong>v1.01</strong><br>    06/04/2026  </div></div>
+<div class="title-block">  <img class="block" src="images/block.png" alt="block">  <div>    <h1>Cognate Chord</h1>    <p class="tagline">Utilities</p>  </div></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>Utilities</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Stereo in / stereo out (sum-to-mono on Anagram — see note)</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td>1.01 (06/04/2026)</td>
+</tr>
+</tbody>
+</table>
+<h2>Overview</h2>
+<p>Cognate Chord is a chord reference and practice companion. Dial in a key and a chord type and it holds the harmony for you, using one of four beautiful sustained voices — synth pad, strings, tanpura drone, or Hammond organ. <strong>Autofade</strong> brings the chord in when you start playing and fades it out when you stop; <strong>Ducking</strong> pulls it under your notes so it meets your line in waves rather than fighting it. Pair it with Cognate Metro for a complete no-fuss practice rig.</p>
+<h2>Use cases</h2>
+<ul>
+<li><strong>Locking in chord tones.</strong> Hear which notes belong over a chord instead of guessing.</li>
+<li><strong>Scales and modes in context.</strong> Run a mode over its parent chord so you actually hear the colour of each degree.</li>
+<li><strong>Ear training.</strong> Use it as a reliable harmonic reference to sing or play intervals against.</li>
+<li><strong>Fretless and double bass intonation work.</strong> A sustained drone or pad is a brutally honest tuning check.</li>
+<li><strong>Hands-free progressions.</strong> Assign two different chords to Anagram footswitches to move between them without stopping playing.</li>
+<li><strong>Practice rig.</strong> Pair with Cognate Metro — click plus changing chord — for a full no-laptop practice session.</li>
+</ul>
+<h2>Parameters</h2>
+<div class="page-overview"><img alt="Page 1" src="images/pages/page-1.png" /><p class="caption">Page 1 of 2</p></div>
+<div class="page-overview"><img alt="Page 2" src="images/pages/page-2.png" /><p class="caption">Page 2 of 2</p></div>
+<div class="param"><div class="img"><img alt="Bypass" src="images/params/bypass.png" /></div><div class="body"><h3>Bypass</h3>
+<ul class="spec">
+<li><strong>Type:</strong> Toggle in the centre of the top bar</li>
+</ul>
+<p>Silences the chord and passes your bass straight through to the next block in the signal chain. The plugin stays in your preset, so you can toggle the chord in and out without having to reload anything.</p>
+</div></div><div class="param"><div class="img"><img alt="Key" src="images/params/key.png" /></div><div class="body"><h3>Key</h3>
+<ul class="spec">
+<li><strong>Options:</strong> C, D, E, F, G, A, B</li>
+</ul>
+<p>Selects the root note of the chord. Combine with <strong>Mode</strong> to build a complete chord — e.g. Key <strong>A</strong> + Mode <strong>Minor 7</strong> gives you Am7. Covers all seven natural notes; for sharps and flats, pick the nearest and re-voice with the chord type (e.g. F# minor = F# but you can also think of it as D major's relative minor).</p>
+</div></div><div class="param"><div class="img"><img alt="Mode" src="images/params/mode.png" /></div><div class="body"><h3>Mode</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Root, Root &amp; 5th, Major, Minor, Dom 7, Major 7, Minor 7, Sus 4, m7b5, Dim 7, Aug, MinMaj 7</li>
+</ul>
+<p>Chord quality, from a bare root note up to altered jazz chords. Covers everything you're likely to reach for in pop, rock, and jazz practice.</p>
+<ul>
+<li><strong>Root</strong> — Single note, the tonic. Useful as a drone or for intonation.</li>
+<li><strong>Root &amp; 5th</strong> — Open fifth, no third. Modal, ambiguous, works over both major and minor scales.</li>
+<li><strong>Major / Minor</strong> — Standard triads.</li>
+<li><strong>Dom 7, Major 7, Minor 7</strong> — The three essential seventh chords of functional harmony.</li>
+<li><strong>Sus 4</strong> — The third replaced by the fourth; bright and unresolved.</li>
+<li><strong>m7♭5</strong> (half-diminished) — The ii° of a minor key, and the darker half of a minor II-V.</li>
+<li><strong>Dim 7</strong> — Symmetrical diminished seventh. Tense.</li>
+<li><strong>Aug</strong> — Augmented triad. Whole-tone flavour.</li>
+<li><strong>MinMaj 7</strong> — Minor with a major seventh. Moody, film-score colour.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Sound" src="images/params/sound.png" /></div><div class="body"><h3>Sound</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Pad, Strings, Tanpura, Hammond</li>
+</ul>
+<p>The voice used to play the chord. Each one has subtle internal movement so it stays interesting across long practice sessions.</p>
+<ul>
+<li><strong>Pad</strong> — Warm synth pad. Neutral and blends under anything.</li>
+<li><strong>Strings</strong> — Bowed ensemble. More melodic character; good for slower work.</li>
+<li><strong>Tanpura</strong> — Plucked drone in the Indian classical tradition. Rich with overtones — excellent for intonation practice.</li>
+<li><strong>Hammond</strong> — Tonewheel organ. Brighter and more rhythmic; gives the chord a sense of forward motion.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Level" src="images/params/level.png" /></div><div class="body"><h3>Level</h3>
+<ul class="spec">
+<li><strong>Range:</strong> -40 to 20 dB</li>
+<li><strong>Default:</strong> -6 dB</li>
+<li><strong>Special:</strong> <code>-40</code> = "-Inf"</li>
+</ul>
+<p>Volume of the chord, relative to your bass. Set it loud enough to hear clearly but quiet enough that your own playing still dominates. Turning fully down (<code>-Inf</code>) silences the chord without disabling the plugin.</p>
+</div></div><div class="param"><div class="img"><img alt="Tone" src="images/params/tone.png" /></div><div class="body"><h3>Tone</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 100 %</li>
+<li><strong>Default:</strong> 100 %</li>
+</ul>
+<p>Brightness of the chord sound. Full up is the voice as intended — warm but present. Roll it back to tuck the chord further into the background, useful when the Pad or Tanpura are already feeling too rich under your line.</p>
+</div></div><div class="param"><div class="img"><img alt="Voicing" src="images/params/voicing.png" /></div><div class="body"><h3>Voicing</h3>
+<ul class="spec">
+<li><strong>Options:</strong> Compact, Open, Wide, High</li>
+</ul>
+<p>How the chord is distributed across octaves. Pick the voicing that best gets out of the way of the register you're playing in.</p>
+<ul>
+<li><strong>Compact</strong> — Close-position chord in one octave. Clean and tight.</li>
+<li><strong>Open</strong> — Same notes spread across a wider register, less dense.</li>
+<li><strong>Wide</strong> — Two octaves. Bigger sound, good for sparse playing.</li>
+<li><strong>High</strong> — Pushes the chord up into the upper register to clear space for bass-register playing. Best for working out of the low fretboard.</li>
+</ul>
+</div></div><div class="param"><div class="img"><img alt="Autofade" src="images/params/autofade.png" /></div><div class="body"><h3>Autofade</h3>
+<ul class="spec">
+<li><strong>Type:</strong> On / Off</li>
+</ul>
+<p>When on, the chord fades in when you start playing and fades out again when you stop. Makes the chord feel like an accompanist that knows when to join in and when to pause, instead of a constant drone. Turn it off to hear the chord continuously — useful for extended intonation work or when you need an unbroken harmonic reference.</p>
+</div></div><div class="param"><div class="img"><img alt="Ducking" src="images/params/ducking.png" /></div><div class="body"><h3>Ducking</h3>
+<ul class="spec">
+<li><strong>Range:</strong> 0 to 100 %</li>
+<li><strong>Default:</strong> 20 %</li>
+</ul>
+<p>How much the chord drops in volume while you're playing. At <strong>0%</strong> the chord holds its full level regardless; as you increase, the chord sidechains out of your way and returns as soon as you pause. A setting around <strong>20%</strong> (the default) is enough to stop the chord crowding your notes without burying it. Paired with Autofade, the chord rises and falls in natural waves around your playing.</p></div></div>
+<div class="footer-note">Cognate Audio · cognate.audio</div>
+</body>
+</html>

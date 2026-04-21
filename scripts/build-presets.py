@@ -1,25 +1,30 @@
 #!/usr/bin/env python3
 """
-Build the "Suggested Settings" section on each plugin page from
-website/presets/<slug>/presets.json.
+Build the "Suggested Settings" section on each block page from
+website/blocks/<slug>/presets/presets.json.
 
 Idempotent: delimits the generated section with <!-- PRESETS:START --> and
 <!-- PRESETS:END --> marker comments. Running it again replaces the section
-cleanly. If there are no presets for a plugin, the section is emptied.
+cleanly. If there are no presets for a block, the section is emptied.
 
-Audio: if `<id>.m4a` exists alongside the images, it is rendered as an
+Audio: if `<id>.m4a` exists alongside the page images, it is rendered as an
 <audio controls> under the images on the card, and passed into the shared
 lightbox via `window.openLightbox(images, name, desc, audio)`.
 
 presets.json schema (array):
   [
     {
-      "id":          "01-slam",          # stable slug; drives image filenames
+      "id":          "01-slam",
       "name":        "Slam",
       "description": "Punchy, compressed bass grit.",
-      "pages":       2                   # 1 or 2
+      "pages":       2
     }
   ]
+
+Images per preset live at:
+  website/blocks/<slug>/presets/<id>-page1.png
+  website/blocks/<slug>/presets/<id>-page2.png   (optional)
+  website/blocks/<slug>/presets/<id>.m4a         (optional)
 """
 
 from __future__ import annotations
@@ -28,15 +33,15 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-PRESETS_DIR = ROOT / "presets"
-PLUGINS_DIR = ROOT / "plugins"
+ROOT = Path(__file__).resolve().parents[1] / "public"
+BLOCKS_DIR = ROOT / "blocks"
 
 START = "<!-- PRESETS:START -->"
 END = "<!-- PRESETS:END -->"
 
 
-def plugin_title(slug: str) -> str:
+def block_title(slug: str) -> str:
+    # "cognate-pultrick" -> "Cognate Pultrick"
     return "Cognate " + slug.split("-", 1)[1].capitalize()
 
 
@@ -44,18 +49,19 @@ def esc(s: str) -> str:
     return htmllib.escape(s, quote=True)
 
 
-def render_section(slug: str, presets: list[dict]) -> str:
+def render_section(slug: str, presets: list[dict], block_dir: Path) -> str:
     if not presets:
         return f"{START}\n{END}"
 
-    name = plugin_title(slug)
+    name = block_title(slug)
     cards = []
     for p in presets:
         pid = p["id"]
         pages = int(p.get("pages", 1))
-        images = [f"../presets/{slug}/{pid}-page{i}.png" for i in range(1, pages + 1)]
-        audio_file = PRESETS_DIR / slug / f"{pid}.m4a"
-        audio_src = f"../presets/{slug}/{pid}.m4a" if audio_file.exists() else ""
+        images = [f"presets/{pid}-page{i}.png" for i in range(1, pages + 1)]
+        audio_rel = f"presets/{pid}.m4a"
+        audio_file = block_dir / audio_rel
+        audio_src = audio_rel if audio_file.exists() else ""
 
         thumbs = "\n".join(
             f'                        <img src="{src}" alt="{esc(p["name"])} page {i+1}" '
@@ -113,8 +119,8 @@ def render_section(slug: str, presets: list[dict]) -> str:
     )
 
 
-def load_presets(slug: str) -> list[dict]:
-    f = PRESETS_DIR / slug / "presets.json"
+def load_presets(block_dir: Path) -> list[dict]:
+    f = block_dir / "presets" / "presets.json"
     if not f.exists():
         return []
     try:
@@ -124,10 +130,10 @@ def load_presets(slug: str) -> list[dict]:
         return []
 
 
-def patch_plugin_page(slug: str, section: str) -> bool:
-    page = PLUGINS_DIR / f"{slug}.html"
+def patch_block_page(block_dir: Path, section: str) -> bool:
+    page = block_dir / "index.html"
     if not page.exists():
-        print(f"  [!] no plugin page at {page}")
+        print(f"  [!] no block page at {page}")
         return False
     html = page.read_text()
 
@@ -136,9 +142,9 @@ def patch_plugin_page(slug: str, section: str) -> bool:
         after = html.split(END, 1)[1]
         new_html = before + section + after
     else:
-        anchor = "<!-- Related Plugins -->"
+        anchor = "<!-- Related Blocks -->"
         if anchor not in html:
-            print(f"  [!] {slug}: cannot find '{anchor}' insertion anchor")
+            print(f"  [!] {block_dir.name}: cannot find '{anchor}' insertion anchor")
             return False
         new_html = html.replace(anchor, f"{section}\n\n    {anchor}", 1)
 
@@ -149,18 +155,22 @@ def patch_plugin_page(slug: str, section: str) -> bool:
 
 
 def main() -> int:
-    slugs = sorted(d.name for d in PRESETS_DIR.iterdir() if d.is_dir())
+    block_dirs = sorted(
+        d for d in BLOCKS_DIR.iterdir()
+        if d.is_dir() and d.name.startswith("cognate-")
+    )
     any_change = False
-    for slug in slugs:
-        presets = load_presets(slug)
-        section = render_section(slug, presets)
-        changed = patch_plugin_page(slug, section)
+    for block_dir in block_dirs:
+        slug = block_dir.name
+        presets = load_presets(block_dir)
+        section = render_section(slug, presets, block_dir)
+        changed = patch_block_page(block_dir, section)
         status = "updated" if changed else "unchanged"
         count = len(presets)
         print(f"  {slug}: {count} preset{'s' if count != 1 else ''} — {status}")
         any_change = any_change or changed
     if not any_change:
-        print("No plugin pages changed.")
+        print("No block pages changed.")
     return 0
 
 

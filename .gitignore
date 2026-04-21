@@ -1,3 +1,5 @@
 .dev.vars
 products.json
 .DS_Store
+.wrangler/
+node_modules/
