@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://cognate.audio/</loc></url>
-  <url><loc>https://cognate.audio/blocks.html</loc></url>
-  <url><loc>https://cognate.audio/about.html</loc></url>
-  <url><loc>https://cognate.audio/contact.html</loc></url>
+  <url><loc>https://cognate.audio/blocks</loc></url>
+  <url><loc>https://cognate.audio/about</loc></url>
+  <url><loc>https://cognate.audio/contact</loc></url>
 
   <url><loc>https://cognate.audio/blocks/cognate-bitcrush/</loc></url>
   <url><loc>https://cognate.audio/blocks/cognate-chord/</loc></url>

@@ -1,5 +1,5 @@
 # Cloudflare Pages rewrites. Each block's canonical path is /blocks/<slug>/.
 # Existing block metadata references /plugins/<slug> — rewrite to /blocks.
 # Specific rules before splat rules.
-/plugins.html     /blocks.html          301
+/plugins.html     /blocks               301
 /plugins/*        /blocks/:splat        200
