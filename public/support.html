@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Cognate Audio</title>
+    <meta name="description"
+        content="Help with Cognate Audio blocks: how to try, buy and install on Darkglass Anagram, FAQs, troubleshooting, and manuals.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="canonical" href="https://cognate.audio/support">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+    <meta name="theme-color" content="#F2694A">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cognate Audio">
+    <meta property="og:title" content="Support — Cognate Audio">
+    <meta property="og:description"
+        content="Help with Cognate Audio blocks: how to try, buy and install on Darkglass Anagram, FAQs, troubleshooting, and manuals.">
+    <meta property="og:url" content="https://cognate.audio/support">
+    <meta property="og:image" content="https://cognate.audio/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Support — Cognate Audio">
+    <meta name="twitter:description"
+        content="Help with Cognate Audio blocks: how to try, buy and install on Darkglass Anagram, FAQs, troubleshooting, and manuals.">
+    <meta name="twitter:image" content="https://cognate.audio/og.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'cognate-orange': '#F2694A', 'cognate-dark': '#48515B', 'cognate-red': '#DF3610' },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        details>summary {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details>summary .chev {
+            transition: transform 200ms;
+        }
+
+        details[open]>summary .chev {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="images/CognateAudioPrimary-Colour.png" alt="Cognate Audio" class="h-10">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-gray-600 hover:text-cognate-orange transition-colors">Home</a>
+                    <a href="blocks" class="text-gray-600 hover:text-cognate-orange transition-colors">Blocks</a>
+                    <a href="support"
+                        class="text-gray-900 font-medium hover:text-cognate-orange transition-colors">Support</a>
+                    <a href="about" class="text-gray-600 hover:text-cognate-orange transition-colors">About</a>
+                    <a href="contact" class="text-gray-600 hover:text-cognate-orange transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+                <a href="/" class="block py-2 text-gray-600">Home</a>
+                <a href="blocks" class="block py-2 text-gray-600">Blocks</a>
+                <a href="support" class="block py-2 text-gray-900 font-medium">Support</a>
+                <a href="about" class="block py-2 text-gray-600">About</a>
+                <a href="contact" class="block py-2 text-gray-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <section class="pt-32 pb-12 px-6 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-[1.1fr_1fr] gap-10 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Support</h1>
+                    <p class="text-xl text-gray-600">Everything you need to try, buy, install, and get the most out of
+                        Cognate blocks on your Darkglass Anagram.</p>
+                </div>
+                <div class="relative">
+                    <!-- Soft orange glow + subtle grid backdrop on the right of the heading -->
+                    <div aria-hidden="true" class="absolute -inset-6 -right-12 -z-10">
+                        <div class="absolute -top-12 -right-8 w-72 h-72 rounded-full bg-cognate-orange/30 blur-3xl">
+                        </div>
+                        <div class="absolute inset-0 rounded-3xl"
+                            style="background-image: linear-gradient(rgba(15,23,42,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.05) 1px, transparent 1px); background-size: 24px 24px; mask-image: radial-gradient(ellipse at 70% 50%, rgba(0,0,0,0.6) 0%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 70% 50%, rgba(0,0,0,0.6) 0%, transparent 70%);">
+                        </div>
+                    </div>
+                    <img src="images/anagram_4k_rightfront.png" alt="Darkglass Anagram"
+                        class="relative w-full max-w-md mx-auto md:ml-auto drop-shadow-[0_30px_50px_rgba(15,23,42,0.18)] transition-transform duration-700 hover:-translate-y-1"
+                        style="transform: scale(2.0); transform-origin: 50% 40%;" loading="eager" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick start -->
+    <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Quick start</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-orange-100 text-cognate-orange flex items-center justify-center font-bold mb-4">
+                        1</div>
+                    <h3 class="text-lg font-semibold mb-2">Try</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Open the <a
+                            href="https://marketplace.anagram.shop/vendor/Cognate%20Audio" target="_blank"
+                            rel="noopener">Anagram Marketplace Cognate Audio vendor page</a>. Every block has a free
+                        trial — load it on your Anagram
+                        and play.</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-orange-100 text-cognate-orange flex items-center justify-center font-bold mb-4">
+                        2</div>
+                    <h3 class="text-lg font-semibold mb-2">Buy</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">When you're ready, buy directly from the
+                        Marketplace listing. Cognate Metro is free; the rest are one-off purchases — no subscriptions,
+                        yours forever.</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-orange-100 text-cognate-orange flex items-center justify-center font-bold mb-4">
+                        3</div>
+                    <h3 class="text-lg font-semibold mb-2">Install</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Check that your Anagram is registered on the <a
+                            href="https://mypedal.darkglass.com/" target="_blank" rel="noopener">MyPedal</a> website.
+                        Try or Buy a block and click Add to Library.
+                        Log in to Darkglass Suite with Anagram connected - you should be prompted to sync your new
+                        plugin. Drop it into any preset.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-8">
+                <a href="https://marketplace.anagram.shop/vendor/Cognate%20Audio" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-3 bg-cognate-orange text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-600 transition-colors">
+                    <img src="images/anagram-marketplace/icon-white.png" alt="" class="w-5 h-5 object-contain">
+                    Visit Cognate on the Anagram Marketplace
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="py-12 px-6 bg-gray-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">FAQs</h2>
+            <div class="space-y-3">
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">Where do I buy Cognate blocks?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">All our blocks are available exclusively on
+                        the <a href="https://marketplace.anagram.shop/vendor/Cognate%20Audio" target="_blank"
+                            rel="noopener" class="text-cognate-orange hover:underline">Anagram Marketplace</a>.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">Do I need an Anagram to use Cognate blocks?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Yes. Cognate blocks are designed specifically
+                        for the Darkglass Anagram effects processor. They aren't available as VST/AU/AAX plugins
+                        currently.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">Which Anagram KosmOS version do I need?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Our blocks should run on most recent versions,
+                        but we always
+                        recommend using the latest KosmOS release. You can update via the Darkglass Suite.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">Can I try before I buy?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Yes. Every block has a free trial on the
+                        Anagram Marketplace — load it on your Anagram and try it for yourself. In trial mode, blocks
+                        will become silent for 5 seconds every 30 seconds.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">Will my preset still work after a block update?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Yes — preset compatibility is a hard
+                        guarantee. We don't change parameter ranges, defaults or behaviour in ways that would invalidate
+                        a saved preset. If we ever need to make a breaking change, we'd ship it as a new block rather
+                        than overwrite the existing one.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">How do refunds work?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Purchases and refunds are handled by the
+                        Anagram Marketplace. See their support pages for the current refund policy.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">I bought a block but I don't see it on my Anagram</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">
+                        Check that your Anagram is registered on the <a href="https://mypedal.darkglass.com/"
+                            target="_blank" rel="noopener">MyPedal</a> website.
+
+                        On the Marketplace, Log In with the same email address and check that the block appears in your
+                        Library.
+
+                        Then start Darkglass Suite with Anagram connected, and log in with the same email address.
+
+                        You should be prompted to install any plugins you have purchesed, and you can manage your
+                        plugins in the Assets tab.
+
+                        Check for the block in the category matching the one on the Anagram Marketplace.
+
+                        If it's still
+                        missing, get in touch with <a href="https://www.darkglass.com/en-gb/pages/support"
+                            target="_blank" rel="noopener">Darkglass Support</a>.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">Can you make a block for X?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">We love hearing block ideas. Drop us a feature
+                        request via the <a href="contact" class="text-cognate-orange hover:underline">contact form</a> —
+                        even if we don't end up making it ourselves, it helps us understand what bassists actually want.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="py-12 px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Troubleshooting</h2>
+            <div class="space-y-3">
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">A block I purchased doesn't appear on Anagram</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Check that you are signed into Anagram
+                        Marketplace and Darkglass Suite with the same email address. Once signed in, Darkglass Suite
+                        should prompt you to install your block.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">Audio cuts out when a Cognate block is on</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">In trial mode, any block will become silent
+                        for 5 seconds every 30 seconds. This will affect the entire signal chain, regardless of block
+                        Bypass settings.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">I see a red DSP Overload warning</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Anagram can support many blocks running
+                        simultaneously but some blocks consume more CPU resources than others. NAM
+                        loader blocks in particular can use more
+                        CPU resources depending on how they were captured. As a result, it's not possible to guarantee
+                        that all Anagram blocks can run simultaneously. If you see a red DSP Overload warning, you
+                        should try to simplify the signal chain by removing
+                        or bypassing some blocks. We work hard to optimise and streamline our blocks to use as little
+                        CPU as possible. We publish our blocks' CPU usage on this website.
+                    </p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">A parameter doesn't behave the way the manual describes</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Make sure you're on the latest version of the
+                        block. Sync your Anagram to Darkglass Suite to install any updated versions of the block, and
+                        update KosmOS. If that doesn't work, <a href="contact"
+                            class="text-cognate-orange hover:underline">tell us</a> and we'll dig in.</p>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 px-5 py-4">
+                    <summary class="flex items-center justify-between gap-4">
+                        <span class="font-medium">How do I reset a block to its defaults?</span>
+                        <svg class="chev w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <p class="text-gray-600 text-sm leading-relaxed mt-3">Open the block from your signal chain. Tap the
+                        three dots icon and choose "Restore factory default state".</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manuals -->
+    <section class="py-12 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">Manuals</h2>
+            <p class="text-gray-600 mb-8">Full reference for every Cognate block — parameters, use cases and tips.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="blocks/cognate-bitcrush/manual/"
+                    class="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-4 hover:border-cognate-orange transition-colors">
+                    <img src="images/cognate-bitcrush block image 800x800.png" alt=""
+                        class="w-16 h-16 rounded-lg object-cover bg-gray-50">
+                    <div class="flex-1">
+                        <div class="font-semibold">Cognate Bitcrush</div>
+                        <div class="text-sm text-gray-500 group-hover:text-cognate-orange">Read manual →</div>
+                    </div>
+                </a>
+                <a href="blocks/cognate-chord/manual/"
+                    class="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-4 hover:border-cognate-orange transition-colors">
+                    <img src="images/cognate-chord block image 800x800.png" alt=""
+                        class="w-16 h-16 rounded-lg object-cover bg-gray-50">
+                    <div class="flex-1">
+                        <div class="font-semibold">Cognate Chord</div>
+                        <div class="text-sm text-gray-500 group-hover:text-cognate-orange">Read manual →</div>
+                    </div>
+                </a>
+                <a href="blocks/cognate-hologram/manual/"
+                    class="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-4 hover:border-cognate-orange transition-colors">
+                    <img src="images/cognate-hologram block image 800x800.png" alt=""
+                        class="w-16 h-16 rounded-lg object-cover bg-gray-50">
+                    <div class="flex-1">
+                        <div class="font-semibold">Cognate Hologram</div>
+                        <div class="text-sm text-gray-500 group-hover:text-cognate-orange">Read manual →</div>
+                    </div>
+                </a>
+                <a href="blocks/cognate-kinetic/manual/"
+                    class="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-4 hover:border-cognate-orange transition-colors">
+                    <img src="images/cognate-kinetic block image 800x800.png" alt=""
+                        class="w-16 h-16 rounded-lg object-cover bg-gray-50">
+                    <div class="flex-1">
+                        <div class="font-semibold">Cognate Kinetic</div>
+                        <div class="text-sm text-gray-500 group-hover:text-cognate-orange">Read manual →</div>
+                    </div>
+                </a>
+                <a href="blocks/cognate-metro/manual/"
+                    class="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-4 hover:border-cognate-orange transition-colors">
+                    <img src="images/cognate-metro block image 800x800.png" alt=""
+                        class="w-16 h-16 rounded-lg object-cover bg-gray-50">
+                    <div class="flex-1">
+                        <div class="font-semibold">Cognate Metro</div>
+                        <div class="text-sm text-gray-500 group-hover:text-cognate-orange">Read manual →</div>
+                    </div>
+                </a>
+                <a href="blocks/cognate-pultrick/manual/"
+                    class="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-4 hover:border-cognate-orange transition-colors">
+                    <img src="images/cognate-pultrick block image 800x800.png" alt=""
+                        class="w-16 h-16 rounded-lg object-cover bg-gray-50">
+                    <div class="flex-1">
+                        <div class="font-semibold">Cognate Pultrick</div>
+                        <div class="text-sm text-gray-500 group-hover:text-cognate-orange">Read manual →</div>
+                    </div>
+                </a>
+                <a href="blocks/cognate-ringmod/manual/"
+                    class="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-4 hover:border-cognate-orange transition-colors">
+                    <img src="images/cognate-ringmod block image 800x800.png" alt=""
+                        class="w-16 h-16 rounded-lg object-cover bg-gray-50">
+                    <div class="flex-1">
+                        <div class="font-semibold">Cognate Ringmod</div>
+                        <div class="text-sm text-gray-500 group-hover:text-cognate-orange">Read manual →</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get in touch -->
+    <section class="py-20 px-6 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Still stuck?</h2>
+            <p class="text-gray-300 mb-8">If your question isn't answered here, drop us a line and we'll get back to
+                you.</p>
+            <a href="contact"
+                class="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                Contact us
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER:START -->
+    <style>
+        .newsletter {
+            background: #F9FAFB;
+            border-top: 1px solid #F3F4F6;
+            padding: 56px 24px;
+        }
+
+        .newsletter-inner {
+            max-width: 1152px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .newsletter-text h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 6px;
+            color: #111827;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-text p {
+            color: #4B5563;
+            margin: 0;
+            font-size: 15px;
+            max-width: 540px;
+            line-height: 1.55;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            flex: 0 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input[type="email"] {
+            padding: 12px 18px;
+            border: 1px solid #E5E7EB;
+            border-radius: 9999px;
+            font: inherit;
+            min-width: 280px;
+            outline: none;
+            transition: border-color 150ms, box-shadow 150ms;
+            background: #fff;
+            color: #111827;
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: #F2694A;
+            box-shadow: 0 0 0 3px rgba(242, 105, 74, 0.15);
+        }
+
+        .newsletter-form button {
+            background: #F2694A;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font: inherit;
+            transition: background 150ms;
+        }
+
+        .newsletter-form button:hover {
+            background: #E55A3C;
+        }
+
+        .newsletter-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .newsletter-status {
+            flex: 1 0 100%;
+            font-size: 14px;
+            min-height: 18px;
+            color: #4B5563;
+        }
+
+        .newsletter-status.ok {
+            color: #15803D;
+        }
+
+        .newsletter-status.err {
+            color: #B91C1C;
+        }
+
+        .newsletter-form.submitted input[type="email"],
+        .newsletter-form.submitted button {
+            display: none;
+        }
+
+        .newsletter-form.submitted .newsletter-status {
+            flex: 0 0 auto;
+            min-height: auto;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 720px) {
+            .newsletter-form {
+                width: 100%;
+            }
+
+            .newsletter-form input[type="email"] {
+                min-width: 0;
+                flex: 1;
+            }
+        }
+    </style>
+    <section class="newsletter">
+        <div class="newsletter-inner">
+            <div class="newsletter-text">
+                <h3>Join the newsletter</h3>
+                <p>Get notified when we ship new blocks, share settings, or post something useful. No flood, no fluff.
+                    Unsubscribe any time.</p>
+            </div>
+            <form id="newsletter-form" action="/api/subscribe" method="POST" class="newsletter-form">
+                <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+                    style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+                <button id="newsletter-submit" type="submit">Subscribe</button>
+                <div class="newsletter-status" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+    </section>
+    <script>
+            (function () {
+                var f = document.getElementById("newsletter-form");
+                if (!f) return;
+                var status = f.querySelector(".newsletter-status");
+                var btn = document.getElementById("newsletter-submit");
+                f.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    btn.disabled = true;
+                    status.textContent = "Subscribing…";
+                    status.className = "newsletter-status";
+                    fetch(f.action, { method: "POST", headers: { "Accept": "application/json" }, body: new FormData(f) })
+                        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
+                        .then(function (res) {
+                            if (res.ok && res.body.ok) {
+                                status.textContent = res.body.duplicate
+                                    ? "You’re already on the list — thanks!"
+                                    : "Thanks — check your inbox for a welcome message.";
+                                status.className = "newsletter-status ok";
+                                f.classList.add("submitted");
+                            } else {
+                                status.textContent = (res.body && res.body.error) || "Something went wrong. Please try again.";
+                                status.className = "newsletter-status err";
+                            }
+                        })
+                        .catch(function () {
+                            status.textContent = "Network error. Please try again.";
+                            status.className = "newsletter-status err";
+                        })
+                        .then(function () { btn.disabled = false; });
+                });
+            })();
+    </script>
+    <!-- NEWSLETTER:END -->
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="images/CognateAudioSymbol-Colour.png" alt="Cognate Audio" class="h-8">
+                    <span class="font-medium text-gray-600">Cognate Audio</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.youtube.com/@CognateAudio" target="_blank"
+                        class="text-gray-400 hover:text-gray-600 transition-colors"><svg class="w-6 h-6"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg></a>
+                    <a href="https://www.facebook.com/cognate.audio" target="_blank"
+                        class="text-gray-400 hover:text-gray-600 transition-colors"><svg class="w-6 h-6"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg></a>
+                    <a href="https://www.instagram.com/cognate.audio/" target="_blank"
+                        class="text-gray-400 hover:text-gray-600 transition-colors"><svg class="w-6 h-6"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg></a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2026 Cognate Audio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
