@@ -219,6 +219,71 @@
     </section>
 
     <!-- Footer -->
+    <!-- NEWSLETTER:START -->
+    <style>
+    .newsletter { background: #F9FAFB; border-top: 1px solid #F3F4F6; padding: 56px 24px; }
+    .newsletter-inner { max-width: 1152px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
+    .newsletter-text h3 { font-size: 22px; font-weight: 700; margin: 0 0 6px; color: #111827; letter-spacing: -0.01em; }
+    .newsletter-text p { color: #4B5563; margin: 0; font-size: 15px; max-width: 540px; line-height: 1.55; }
+    .newsletter-form { display: flex; gap: 8px; flex: 0 0 auto; flex-wrap: wrap; }
+    .newsletter-form input[type="email"] { padding: 12px 18px; border: 1px solid #E5E7EB; border-radius: 9999px; font: inherit; min-width: 280px; outline: none; transition: border-color 150ms, box-shadow 150ms; background: #fff; color: #111827; }
+    .newsletter-form input[type="email"]:focus { border-color: #F2694A; box-shadow: 0 0 0 3px rgba(242,105,74,0.15); }
+    .newsletter-form button { background: #F2694A; color: #fff; padding: 12px 24px; border-radius: 9999px; border: none; font-weight: 600; cursor: pointer; font: inherit; transition: background 150ms; }
+    .newsletter-form button:hover { background: #E55A3C; }
+    .newsletter-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .newsletter-status { flex: 1 0 100%; font-size: 14px; min-height: 18px; color: #4B5563; }
+    .newsletter-status.ok { color: #15803D; }
+    .newsletter-status.err { color: #B91C1C; }
+    @media (max-width: 720px) { .newsletter-form { width: 100%; } .newsletter-form input[type="email"] { min-width: 0; flex: 1; } }
+    </style>
+    <section class="newsletter">
+        <div class="newsletter-inner">
+            <div class="newsletter-text">
+                <h3>Join the newsletter</h3>
+                <p>Get notified when we ship new blocks, share settings, or post something useful. No flood, no fluff. Unsubscribe any time.</p>
+            </div>
+            <form id="newsletter-form" action="/api/subscribe" method="POST" class="newsletter-form">
+                <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+                <button id="newsletter-submit" type="submit">Subscribe</button>
+                <div class="newsletter-status" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+    </section>
+    <script>
+    (function() {
+        var f = document.getElementById("newsletter-form");
+        if (!f) return;
+        var status = f.querySelector(".newsletter-status");
+        var btn = document.getElementById("newsletter-submit");
+        f.addEventListener("submit", function(e) {
+            e.preventDefault();
+            btn.disabled = true;
+            status.textContent = "Subscribing…";
+            status.className = "newsletter-status";
+            fetch(f.action, { method: "POST", headers: { "Accept": "application/json" }, body: new FormData(f) })
+                .then(function(r) { return r.json().then(function(j) { return { ok: r.ok, body: j }; }); })
+                .then(function(res) {
+                    if (res.ok && res.body.ok) {
+                        status.textContent = res.body.duplicate
+                            ? "You’re already on the list — thanks!"
+                            : "Thanks — check your inbox for a welcome message.";
+                        status.className = "newsletter-status ok";
+                        if (!res.body.duplicate) f.reset();
+                    } else {
+                        status.textContent = (res.body && res.body.error) || "Something went wrong. Please try again.";
+                        status.className = "newsletter-status err";
+                    }
+                })
+                .catch(function() {
+                    status.textContent = "Network error. Please try again.";
+                    status.className = "newsletter-status err";
+                })
+                .then(function() { btn.disabled = false; });
+        });
+    })();
+    </script>
+    <!-- NEWSLETTER:END -->
     <footer class="py-12 px-6 border-t border-gray-100">
         <div class="max-w-6xl mx-auto text-center text-sm text-gray-500">
             <a href="../../../" class="inline-flex items-center gap-2 text-gray-600 hover:text-cognate-orange">

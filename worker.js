@@ -1,5 +1,6 @@
 // Cognate Audio site Worker (Workers + Static Assets model).
-// - POST /api/contact    → validates + forwards to Resend, returns JSON
+// - POST /api/contact    → validates + emails the Cognate inbox via Resend
+// - POST /api/subscribe  → adds an email to the Resend Audience (newsletter)
 // - Everything else      → falls through to static assets (ASSETS binding)
 
 export default {
@@ -9,21 +10,27 @@ export default {
     if (url.pathname === "/api/contact" && request.method === "POST") {
       return handleContact(request, env);
     }
+    if (url.pathname === "/api/subscribe" && request.method === "POST") {
+      return handleSubscribe(request, env);
+    }
 
     return env.ASSETS.fetch(request);
   },
 };
 
+async function readPayload(request) {
+  const ct = request.headers.get("content-type") || "";
+  if (ct.includes("application/json")) {
+    return await request.json();
+  }
+  const form = await request.formData();
+  return Object.fromEntries(form.entries());
+}
+
 async function handleContact(request, env) {
   let data;
   try {
-    const ct = request.headers.get("content-type") || "";
-    if (ct.includes("application/json")) {
-      data = await request.json();
-    } else {
-      const form = await request.formData();
-      data = Object.fromEntries(form.entries());
-    }
+    data = await readPayload(request);
   } catch {
     return jsonResp({ ok: false, error: "Invalid request body" }, 400);
   }
@@ -34,19 +41,17 @@ async function handleContact(request, env) {
   const message = (data.message || "").toString().trim();
   const honeypot = (data._gotcha || "").toString().trim();
 
-  // Silent success for bots that filled the honeypot.
   if (honeypot) return jsonResp({ ok: true });
 
   if (!name || !email || !message) {
     return jsonResp({ ok: false, error: "Please fill in name, email and message." }, 400);
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!isEmail(email)) {
     return jsonResp({ ok: false, error: "That email address doesn't look right." }, 400);
   }
   if (message.length > 10000) {
     return jsonResp({ ok: false, error: "Message too long (max 10,000 characters)." }, 400);
   }
-
   if (!env.RESEND_API_KEY) {
     return jsonResp({ ok: false, error: "Mail is not configured yet." }, 500);
   }
@@ -78,11 +83,98 @@ async function handleContact(request, env) {
 
   if (!resendResp.ok) {
     const body = await resendResp.text();
-    console.error("Resend error", resendResp.status, body);
+    console.error("Resend (contact) error", resendResp.status, body);
     return jsonResp({ ok: false, error: "Could not send your message. Please try again." }, 502);
   }
 
   return jsonResp({ ok: true });
+}
+
+async function handleSubscribe(request, env) {
+  let data;
+  try {
+    data = await readPayload(request);
+  } catch {
+    return jsonResp({ ok: false, error: "Invalid request body" }, 400);
+  }
+
+  const email = (data.email || "").toString().trim();
+  const honeypot = (data._gotcha || "").toString().trim();
+
+  if (honeypot) return jsonResp({ ok: true });
+  if (!email || !isEmail(email)) {
+    return jsonResp({ ok: false, error: "Please enter a valid email address." }, 400);
+  }
+  if (!env.RESEND_API_KEY || !env.RESEND_AUDIENCE_ID) {
+    return jsonResp({ ok: false, error: "Newsletter is not configured yet." }, 500);
+  }
+
+  const audId = env.RESEND_AUDIENCE_ID;
+  const addResp = await fetch(
+    `https://api.resend.com/audiences/${encodeURIComponent(audId)}/contacts`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, unsubscribed: false }),
+    }
+  );
+
+  // Resend returns 200 on add and 200/409-style for already-subscribed,
+  // depending on API version. Treat any 2xx as success and surface a
+  // friendly note for duplicates so the user gets feedback either way.
+  let addJson = null;
+  try { addJson = await addResp.json(); } catch {}
+  const alreadyExists =
+    addResp.status === 409 ||
+    (addJson && (addJson.name === "validation_error" || addJson.name === "duplicate") &&
+     /exist/i.test(addJson.message || ""));
+
+  if (!addResp.ok && !alreadyExists) {
+    console.error("Resend (subscribe) error", addResp.status, addJson);
+    return jsonResp({ ok: false, error: "Could not subscribe. Please try again." }, 502);
+  }
+
+  // Welcome email. Skipping if duplicate to avoid re-spamming returnees.
+  if (!alreadyExists) {
+    const from = env.CONTACT_FROM_EMAIL || "hello@cognate.audio";
+    const welcomeResp = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: `Cognate Audio <${from}>`,
+        to: [email],
+        subject: "Thanks for subscribing — Cognate Audio",
+        text:
+          "Thanks for signing up to the Cognate Audio newsletter.\n\n" +
+          "We'll send the occasional update when we ship a new block, " +
+          "post a setting we're proud of, or have something useful to share — " +
+          "no flood, no fluff.\n\n" +
+          "Catch up on what's out so far: https://cognate.audio/blocks\n\n" +
+          "— Mike\n" +
+          "Cognate Audio\n",
+      }),
+    });
+    if (!welcomeResp.ok) {
+      const body = await welcomeResp.text();
+      console.error("Resend (welcome) error", welcomeResp.status, body);
+      // Non-fatal: subscription succeeded, welcome email failed.
+    }
+  }
+
+  return jsonResp({
+    ok: true,
+    duplicate: alreadyExists,
+  });
+}
+
+function isEmail(s) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
 function jsonResp(payload, status = 200) {
