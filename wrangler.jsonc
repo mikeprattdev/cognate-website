@@ -5,5 +5,13 @@
 	"assets": {
 		"directory": "./public",
 		"binding": "ASSETS"
+	},
+	// Non-secret runtime configuration. Lives in git so it can't be lost on
+	// a redeploy. The actual secret (RESEND_API_KEY) is set in the
+	// Cloudflare dashboard → Variables and Secrets → Secret.
+	"vars": {
+		"CONTACT_TO_EMAIL": "hello@cognate.audio",
+		"CONTACT_FROM_EMAIL": "hello@cognate.audio",
+		"RESEND_AUDIENCE_ID": "f9b92199-96aa-4e1f-9015-21b8adc55692"
 	}
 }
