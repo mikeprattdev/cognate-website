@@ -356,6 +356,8 @@
     .newsletter-status { flex: 1 0 100%; font-size: 14px; min-height: 18px; color: #4B5563; }
     .newsletter-status.ok { color: #15803D; }
     .newsletter-status.err { color: #B91C1C; }
+    .newsletter-form.submitted input[type="email"], .newsletter-form.submitted button { display: none; }
+    .newsletter-form.submitted .newsletter-status { flex: 0 0 auto; min-height: auto; font-size: 16px; font-weight: 500; }
     @media (max-width: 720px) { .newsletter-form { width: 100%; } .newsletter-form input[type="email"] { min-width: 0; flex: 1; } }
     </style>
     <section class="newsletter">
@@ -391,7 +393,7 @@
                             ? "You’re already on the list — thanks!"
                             : "Thanks — check your inbox for a welcome message.";
                         status.className = "newsletter-status ok";
-                        if (!res.body.duplicate) f.reset();
+                        f.classList.add("submitted");
                     } else {
                         status.textContent = (res.body && res.body.error) || "Something went wrong. Please try again.";
                         status.className = "newsletter-status err";
