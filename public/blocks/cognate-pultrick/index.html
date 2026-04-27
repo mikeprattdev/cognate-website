@@ -60,6 +60,7 @@
                 <div class="hidden md:flex items-center gap-8">
                     <a href="../../" class="text-gray-600 hover:text-cognate-orange transition-colors">Home</a>
                     <a href="../../blocks" class="text-gray-900 font-medium hover:text-cognate-orange transition-colors">Blocks</a>
+                    <a href="../../support" class="text-gray-600 hover:text-cognate-orange transition-colors">Support</a>
                     <a href="../../about" class="text-gray-600 hover:text-cognate-orange transition-colors">About</a>
                     <a href="../../contact" class="text-gray-600 hover:text-cognate-orange transition-colors">Contact</a>
                 </div>
@@ -72,6 +73,7 @@
             <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
                 <a href="../../" class="block py-2 text-gray-600">Home</a>
                 <a href="../../blocks" class="block py-2 text-gray-900 font-medium">Blocks</a>
+                <a href="../../support" class="block py-2 text-gray-600">Support</a>
                 <a href="../../about" class="block py-2 text-gray-600">About</a>
                 <a href="../../contact" class="block py-2 text-gray-600">Contact</a>
             </div>
@@ -136,19 +138,43 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                         </svg>
                     </a>
+                    <!-- Specs -->
+                    <dl class="mt-6 grid grid-cols-[100px_1fr] gap-x-4 gap-y-4 text-sm leading-relaxed border-t border-gray-100 pt-5">
+                        <dt class="text-gray-500">Channels</dt>
+                        <dd class="text-gray-900">Mono in / mono out</dd>
 
-                    <!-- Manual links -->
-                    <div class="mt-5 flex flex-wrap gap-5 text-sm">
-                        <a href="manual/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gray-700 hover:text-cognate-orange transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                            View manual
-                        </a>
-                        <a href="manual/cognate-pultrick.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gray-700 hover:text-cognate-orange transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Download PDF
-                        </a>
-                    </div>
-                </div>
+                        <dt class="text-gray-500">CPU</dt>
+                        <dd class="text-gray-900">0.7% average · 1.8% max</dd>
+
+                        <dt class="text-gray-500">Version</dt>
+                        <dd class="text-gray-900">1.01 · 06/04/2026</dd>
+
+                        <dt class="text-gray-500">What's new</dt>
+                        <dd class="text-gray-900">
+                            <details class="group">
+                                <summary class="flex items-center gap-2 cursor-pointer list-none">
+                                    <span>06/04/2026 — v1.01 — Initial release on Anagram Marketplace</span>
+                                    <svg class="w-4 h-4 text-gray-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                                </summary>
+                                <ul class="mt-2 space-y-1.5 text-gray-600">
+                                    <li class="text-gray-500 italic">No earlier history yet.</li>
+                                </ul>
+                            </details>
+                        </dd>
+
+                        <dt class="text-gray-500">Manual</dt>
+                        <dd class="text-gray-900 flex flex-col gap-1.5">
+                            <a href="manual/" class="inline-flex items-center gap-2 hover:text-cognate-orange transition-colors w-fit">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                View
+                            </a>
+                            <a href="manual/cognate-pultrick.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-cognate-orange transition-colors w-fit">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Download PDF
+                            </a>
+                        </dd>
+                    </dl>
+</div>
             </div>
         </div>
     </section>
