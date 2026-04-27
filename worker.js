@@ -87,6 +87,29 @@ async function handleContact(request, env) {
     return jsonResp({ ok: false, error: "Could not send your message. Please try again." }, 502);
   }
 
+  // Optional newsletter opt-in checkbox. Best-effort: a failure here
+  // doesn't fail the contact submission.
+  const subscribe = data.subscribe;
+  const wantsNewsletter =
+    subscribe === true || subscribe === "on" || subscribe === "1" || subscribe === 1;
+  if (wantsNewsletter && env.RESEND_AUDIENCE_ID) {
+    try {
+      await fetch(
+        `https://api.resend.com/audiences/${encodeURIComponent(env.RESEND_AUDIENCE_ID)}/contacts`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${env.RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, first_name: name, unsubscribed: false }),
+        }
+      );
+    } catch (err) {
+      console.error("Newsletter add via contact form failed", err);
+    }
+  }
+
   return jsonResp({ ok: true });
 }
 
