@@ -13,3 +13,10 @@
 /blocks.html      /blocks               301
 /about.html       /about                301
 /contact.html     /contact              301
+
+# Trailing-slash 301s for block detail + manual pages. Cloudflare's
+# default no-slash → slash redirect is a 307 which Google reports as
+# "Page with redirect" each time it crawls. Making it a 301 lets Google
+# record the redirect once and stop emailing about it.
+/blocks/cognate-:slug          /blocks/cognate-:slug/          301
+/blocks/cognate-:slug/manual   /blocks/cognate-:slug/manual/   301
